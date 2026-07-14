@@ -1,0 +1,6 @@
+User-agent: *
+
+Allow: /
+
+Sitemap:
+https://princeomlabanatfc-jpg.github.io/Powered-by-TFC/sitemap.xml
