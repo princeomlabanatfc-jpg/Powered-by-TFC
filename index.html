@@ -57,6 +57,8 @@ body{
   min-height:100vh;
   -webkit-font-smoothing:antialiased;
   transition:background .3s ease, color .3s ease;
+  background-attachment:fixed;
+  overflow:hidden;
 }
 ::selection{background:rgba(var(--emerald-rgb),0.35);}
 ::-webkit-scrollbar{width:8px;height:8px;}
@@ -66,7 +68,7 @@ body{
 button,input,select,textarea{font-family:inherit;color:inherit;}
 button{cursor:pointer;}
 
-.app{display:flex;min-height:100vh;}
+.app{display:flex;height:100vh;min-height:0;}
 
 /* ---------- SIDEBAR ---------- */
 .sidebar{
@@ -75,7 +77,7 @@ button{cursor:pointer;}
   border-right:1px solid var(--glass-border);
   padding:22px 14px;
   display:flex;flex-direction:column;gap:22px;
-  position:sticky;top:0;height:100vh;
+  position:relative;height:100vh;overflow-y:auto;overscroll-behavior:contain;
 }
 .logo{display:flex;align-items:center;gap:10px;padding:0 8px;}
 .logo-mark{
@@ -113,11 +115,11 @@ button{cursor:pointer;}
 .streak-val{font-family:var(--font-mono);color:var(--gold);font-weight:600;}
 
 /* ---------- MAIN ---------- */
-.main{flex:1;min-width:0;display:flex;flex-direction:column;}
+.main{flex:1;min-width:0;height:100vh;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;}
 .topbar{
   display:flex;align-items:center;justify-content:space-between;
   padding:16px 28px;border-bottom:1px solid var(--glass-border);
-  position:sticky;top:0;background:rgba(8,11,10,0.75);backdrop-filter:blur(14px);z-index:20;
+  position:sticky;top:0;flex-shrink:0;background:rgba(8,11,10,0.75);backdrop-filter:blur(14px);z-index:20;
 }
 .topbar-left{display:flex;flex-direction:column;}
 .topbar-title{font-family:var(--font-display);font-size:20px;font-weight:700;}
@@ -137,7 +139,7 @@ button{cursor:pointer;}
 .pill.countdown{border-color:rgba(var(--royal-rgb),0.3);}
 .pill.countdown b{color:var(--royal);}
 
-.content{padding:26px 28px 60px;max-width:1400px;width:100%;margin:0 auto;}
+.content{padding:26px 28px 60px;max-width:1400px;width:100%;margin:0 auto;flex:1;}
 
 /* ---------- CARDS / GLASS ---------- */
 .glass-card{
@@ -1077,7 +1079,7 @@ function defaultChallenge(period, overrides={}){
     id:'chal_'+Date.now()+'_'+Math.random().toString(36).slice(2,7),
     period, name:'', target:'', deadline:'', status:'active',
     progress:0, rewardXP:rewardDefaults.rewardXP, rewardCoins:rewardDefaults.rewardCoins,
-    penalty:'', difficulty:'Medium', createdDate:fmtDate(), completionDate:''
+    penalty:'', difficulty:'Medium', createdDate:fmtDate(), completionDate:'', rewardGranted:false
   }, overrides);
 }
 function buildDefaultChallenges(){ return {daily:[], weekly:[], monthly:[]}; }
@@ -1114,7 +1116,7 @@ function defaultChapter(subject, name){
     weakPoints:'', notes:'',
     revisionCount:0, practiceCount:0, mockTestCount:0,
     lastRevisionDate:'', difficulty:'Medium', confidence:3,
-    priority:'Medium', targetDate:'', completionDate:'',
+    priority:'Medium', targetDate:'', completionDate:'', rewardGranted:false,
     personalRating:0, coachingFinished:false, studentFinished:false,
     colorLabel:'none'
   };
@@ -1157,6 +1159,14 @@ async function loadState(){
       STATE[subj] = buildDefaultSubject(subj);
     }
   }
+  // Older saved data awarded completed items but did not remember that fact.
+  // Record it once so a later uncheck can reverse the original reward safely.
+  ['maths','physics','chemistry'].forEach(subj=>{
+    allChapters(subj).forEach(c=>{
+      if(typeof c.rewardGranted !== 'boolean') c.rewardGranted = !!c.completed;
+      if(!c.completed) c.rewardGranted = false;
+    });
+  });
   try{
     const res = await window.storage.get('profile');
     STATE.profile = res ? JSON.parse(res.value) : STATE.profile;
@@ -1168,6 +1178,12 @@ async function loadState(){
   }catch(e){
     STATE.challenges = buildDefaultChallenges();
   }
+  ['daily','weekly','monthly'].forEach(period=>{
+    (STATE.challenges[period]||[]).forEach(c=>{
+      if(typeof c.rewardGranted !== 'boolean') c.rewardGranted = c.status==='completed';
+      if(c.status!=='completed') c.rewardGranted = false;
+    });
+  });
   try{
     const res = await window.storage.get('study');
     STATE.study = res ? JSON.parse(res.value) : buildDefaultStudy();
@@ -1681,7 +1697,7 @@ function renderDetail(c){
     <div class="field"><label>Confidence (1-5)</label><input type="text" inputmode="numeric" maxlength="1" data-field="confidence" data-id="${c.id}" value="${c.confidence}"></div>
     <div class="field"><label>Target Date</label><input type="date" data-field="targetDate" data-id="${c.id}" value="${c.targetDate}"></div>
 
-    <div class="field"><label>Completion Date</label><input type="date" data-field="completionDate" data-id="${c.id}" value="${c.completionDate}" ${c.completed?'':'disabled'}></div>
+      <div class="field"><label>Completion Date</label><input type="date" data-field="completionDate" data-id="${c.id}" value="${c.completionDate}" title="Choose a date to mark this chapter complete"></div>
     <div class="field"><label>Personal Rating</label><div class="rating-stars" data-id="${c.id}">
       ${[1,2,3,4,5].map(n=>`<span data-star="${n}" class="${c.personalRating>=n?'on':''}">★</span>`).join('')}
     </div></div>
@@ -1741,6 +1757,23 @@ function attachSyllabusHandlers(subj){
       const id = el.dataset.id, field = el.dataset.field;
       const found = findChapter(id); if(!found) return;
       let val = el.type==='checkbox' ? el.checked : el.value;
+      if(field==='completionDate'){
+        if(!val){
+          // A completed chapter must retain a date; use its completion toggle
+          // when reopening it instead of leaving an ambiguous blank state.
+          el.value = found.c.completionDate || '';
+          if(found.c.completed) toast('Use the completion tick to reopen this chapter.');
+          return;
+        }
+        if(!found.c.completed){
+          handleCompleteToggle(id, subj, val);
+          return;
+        }
+        found.c.completionDate = val;
+        saveSubject(subj);
+        toast('Completion date saved.');
+        return;
+      }
       if(field==='confidence'){ val = Math.max(1, Math.min(5, parseInt(val)||1)); }
       found.c[field] = val;
       if(field==='coachingFinished' || field==='studentFinished'){
@@ -1796,7 +1829,7 @@ function labelFor(subj){
 /* ===================== COMPLETE / INCOMPLETE FLOW ===================== */
 let pendingAction=null;
 
-function handleCompleteToggle(id, subj){
+function handleCompleteToggle(id, subj, chosenCompletionDate=''){
   const found = findChapter(id); if(!found) return;
   const c = found.c;
   const overlay = document.getElementById('confirmOverlay');
@@ -1811,11 +1844,14 @@ function handleCompleteToggle(id, subj){
     document.getElementById('confirmYes').className='btn-primary';
     pendingAction = ()=>{
       c.completed = true;
-      c.completionDate = fmtDate();
+      c.completionDate = chosenCompletionDate || fmtDate();
       c.backlog = false;
+      if(!c.rewardGranted){
+        c.rewardGranted = true;
+        awardXP(50, 10);
+        celebrate(c.name, 50, 10);
+      }
       saveSubject(subj);
-      celebrate(c.name, 50, 10);
-      awardXP(50, 10);
       checkAchievements();
     };
   } else {
@@ -1826,6 +1862,10 @@ function handleCompleteToggle(id, subj){
     pendingAction = ()=>{
       c.completed = false;
       c.completionDate = '';
+      if(c.rewardGranted){
+        c.rewardGranted = false;
+        awardXP(-50, -10);
+      }
       recalcBacklog(c);
       saveSubject(subj);
       renderSyllabus(subj, labelFor(subj));
@@ -1873,11 +1913,11 @@ function celebrate(chapterName, xp=50, coins=10){
 }
 
 function awardXP(xp, coins){
-  STATE.profile.xp += xp;
-  STATE.profile.coins += coins;
-  STATE.profile.level = Math.floor(STATE.profile.xp/500)+1;
+  STATE.profile.xp = Math.max(0, STATE.profile.xp + xp);
+  STATE.profile.coins = Math.max(0, STATE.profile.coins + coins);
+  STATE.profile.level = Math.max(1, Math.floor(STATE.profile.xp/500)+1);
   const today = fmtDate();
-  if(STATE.profile.lastActiveDate !== today){
+  if(xp>0 && STATE.profile.lastActiveDate !== today){
     STATE.profile.streak += 1;
     STATE.profile.lastActiveDate = today;
   }
@@ -2006,18 +2046,25 @@ function handleChallengeComplete(id){
     document.getElementById('confirmYes').className='btn-primary';
     pendingAction = ()=>{
       c.status='completed'; c.progress=100; c.completionDate=fmtDate();
+      if(!c.rewardGranted){
+        c.rewardGranted = true;
+        awardXP(c.rewardXP, c.rewardCoins);
+        celebrate(c.name, c.rewardXP, c.rewardCoins);
+      }
       saveChallenges();
-      celebrate(c.name, c.rewardXP, c.rewardCoins);
-      awardXP(c.rewardXP, c.rewardCoins);
       checkAchievements();
     };
   } else {
     title.textContent = `Reopen "${c.name}"?`;
-    text.textContent = "This marks the challenge active again. XP and coins already earned stay with you.";
+    text.textContent = "This marks the challenge active again and reverses its XP and coin reward.";
     modal.classList.remove('success-modal'); modal.classList.add('danger-modal');
     document.getElementById('confirmYes').className='btn-danger';
     pendingAction = ()=>{
       c.status='active'; c.completionDate='';
+      if(c.rewardGranted){
+        c.rewardGranted = false;
+        awardXP(-c.rewardXP, -c.rewardCoins);
+      }
       saveChallenges();
       toast(`"${c.name}" reopened.`);
     };
@@ -2589,7 +2636,11 @@ function insertImageAtCursor(){
     ta.focus();
     ta.setSelectionRange(pos+insertion.length, pos+insertion.length);
     handleNoteInput();
-    toast('Image compressed and inserted.');
+    // Data URLs are deliberately long in Markdown source. Open the preview so
+    // the uploaded image is visible immediately instead of its encoded text.
+    notesEditorTab = 'preview';
+    renderNotes();
+    toast('Image compressed, inserted, and shown in Preview.');
   });
 }
 
