@@ -100,10 +100,13 @@ button{cursor:pointer;}
   text-align:left;width:100%;transition:all .15s ease;
   position:relative;
 }
-.nav-item .dot{width:6px;height:6px;border-radius:50%;background:var(--text-faint);flex-shrink:0;transition:all .15s ease;}
+.nav-item .nav-icon{width:17px;height:17px;flex-shrink:0;color:var(--text-faint);stroke-width:1.8;transition:transform .2s ease,color .2s ease,filter .2s ease;}
 .nav-item:hover{background:rgba(255,255,255,0.045);color:var(--text);}
+.nav-item:hover .nav-icon{color:var(--emerald);transform:translateX(2px) scale(1.08);filter:drop-shadow(0 0 5px rgba(var(--emerald-rgb),.5));}
 .nav-item.active{background:rgba(var(--emerald-rgb),0.12);border-color:rgba(var(--emerald-rgb),0.35);color:var(--text);}
-.nav-item.active .dot{background:var(--emerald);box-shadow:0 0 8px var(--emerald);}
+.nav-item.active .nav-icon{color:var(--emerald);filter:drop-shadow(0 0 7px rgba(var(--emerald-rgb),.72));animation:navIconPulse 2.4s ease-in-out infinite;}
+.app[data-view="maths"] .nav-item.active,.app[data-view="physics"] .nav-item.active,.app[data-view="chemistry"] .nav-item.active{border-color:rgba(168,85,247,.52);background:rgba(139,92,246,.13);}.app[data-view="maths"] .nav-item.active .nav-icon,.app[data-view="physics"] .nav-item.active .nav-icon,.app[data-view="chemistry"] .nav-item.active .nav-icon{color:#a855f7;filter:drop-shadow(0 0 7px rgba(168,85,247,.75));}
+@keyframes navIconPulse{50%{transform:scale(1.12);}}
 .nav-item.locked{opacity:0.45;cursor:not-allowed;}
 .nav-item .badge{
   margin-left:auto;font-size:8.5px;font-family:var(--font-mono);
@@ -113,6 +116,28 @@ button{cursor:pointer;}
 .sidebar-foot{margin-top:auto;padding:12px;border-radius:12px;background:var(--glass);border:1px solid var(--glass-border);}
 .streak-row{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:var(--text-dim);}
 .streak-val{font-family:var(--font-mono);color:var(--gold);font-weight:600;}
+
+/* ---------- DASHBOARD ---------- */
+.dashboard-v2{display:flex;flex-direction:column;gap:16px;}
+.dash-hero-grid{display:grid;grid-template-columns:minmax(420px,1.05fr) 1.45fr;gap:16px;}
+.dashboard-v2 .hero-card{min-height:262px;padding:0;overflow:hidden;position:relative;background:#07100e;}
+.hero-aurora{position:absolute;inset:0;width:48%;overflow:hidden;background-image:linear-gradient(90deg,rgba(2,12,11,.10),rgba(2,12,11,.72)),url('./assets/aurora-hero.png');background-position:center;background-size:cover;}
+.hero-aurora:before,.hero-aurora:after{display:none;}
+.hero-aurora .ring-wrap{position:absolute;left:42px;bottom:20px;z-index:2;}
+.dashboard-v2 .hero-stats{position:relative;z-index:2;margin-left:48%;padding:30px 24px 24px;gap:12px;}
+.dashboard-v2 .hero-stats h2{font-size:20px;line-height:1.25;}.dashboard-v2 .hero-stats h2 em{font-style:normal;color:var(--emerald);}.dashboard-v2 .hero-stats p{font-size:12px;max-width:255px;}.dashboard-v2 .mini-stat b{font-size:18px;}
+.dash-panel{padding:18px;position:relative;overflow:hidden;}.dash-title{font-family:var(--font-display);font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+.dash-title .dash-icon,.dash-title [data-lucide]{width:18px;height:18px;color:var(--emerald);stroke-width:2.2;}.dashboard-v2 .subject-cards{gap:12px;}.dashboard-v2 .subj-card{padding:16px;min-height:160px;background:rgba(255,255,255,.035);}
+.subj-symbol{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;margin-bottom:14px;background:rgba(var(--emerald-rgb),.12);color:var(--emerald);box-shadow:inset 0 0 0 1px rgba(var(--emerald-rgb),.25);}.subj-symbol svg{width:20px;height:20px;stroke-width:2.1;}.subj-card.physics .subj-symbol{color:#6d8cff;background:rgba(59,108,246,.13);box-shadow:inset 0 0 0 1px rgba(59,108,246,.3);}.subj-card.chemistry .subj-symbol{color:#d24cff;background:rgba(210,76,255,.12);box-shadow:inset 0 0 0 1px rgba(210,76,255,.3);}
+.quick-stats-v2{padding:15px 16px;}.quick-stats-v2 .quick-grid{gap:12px;}.quick-stat-v2{display:flex;align-items:center;gap:13px;padding:15px 16px;min-height:72px;background:rgba(255,255,255,.035);}.quick-stat-icon{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:rgba(var(--emerald-rgb),.1);color:var(--emerald);}.quick-stat-icon svg{width:21px;height:21px;stroke-width:2.25;}.quick-stat-xp{position:relative;}.quick-stat-xp b{font:700 10px var(--font-mono);position:absolute;inset:0;display:grid;place-items:center;color:var(--gold);}.quick-stat-v2.level .quick-stat-icon{color:#b066ff;background:rgba(176,102,255,.11)}.quick-stat-v2.xp .quick-stat-icon{color:var(--gold);background:rgba(240,180,41,.11)}.quick-stat-v2.backlog .quick-stat-icon{color:var(--danger);background:rgba(239,68,68,.1)}.quick-stat-v2 b{font-size:20px;margin:0;}.quick-stat-v2 span{font-size:10px;}
+.dash-two-col{display:grid;grid-template-columns:1fr 1.15fr;gap:16px;}.dash-three-col{display:grid;grid-template-columns:1.05fr .9fr 1.25fr;gap:16px;}.dash-widget{min-height:316px;}.dash-toolbar{margin-left:auto;background:rgba(255,255,255,.035);border:1px solid var(--glass-border);border-radius:9px;padding:6px 10px;font-size:10.5px;color:var(--text-dim);}
+.study-overview{display:flex;align-items:center;gap:20px;padding:8px 4px 12px;}.study-donut{width:180px;height:180px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--emerald) 0deg 2deg,rgba(255,255,255,.09) 2deg 360deg);position:relative;flex-shrink:0;}.study-donut:after{content:"";width:128px;height:128px;border-radius:50%;background:var(--bg-2);box-shadow:inset 0 0 24px rgba(0,0,0,.35);}.study-donut-label{position:absolute;text-align:center;z-index:1;font-family:var(--font-display);font-size:26px;font-weight:800;}.study-donut-label small{display:block;font:10px var(--font-body);color:var(--text-faint);margin-top:3px;}.study-legend{display:flex;flex-direction:column;gap:11px;flex:1;}.study-legend-row{display:flex;align-items:center;gap:8px;font-size:11.5px;}.study-legend-row i{width:10px;height:10px;border-radius:50%;}.study-legend-row b{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-dim);}
+.dash-chart-wrap{height:248px;padding:2px 0 0;position:relative;}.dash-chart-wrap svg{display:block;overflow:visible;}.dash-note{margin-top:10px;padding:11px 13px;border-radius:8px;background:rgba(var(--emerald-rgb),.08);color:var(--text-dim);font-size:11px;}.dash-note svg{width:14px;height:14px;vertical-align:-3px;margin-right:6px;color:var(--emerald);}
+.activity-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}.activity-head .dash-title{margin-bottom:14px;}.activity-view-all{margin-left:auto;color:var(--emerald);background:transparent;border:0;font-size:10.5px;font-weight:700;padding:0;}.activity-view-all:hover{text-decoration:underline;}.activity-list{display:flex;flex-direction:column;gap:7px;}.activity-row{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:11px;}.activity-row:last-child{border-bottom:none;}.activity-icon{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(var(--emerald-rgb),.1);color:var(--emerald);flex-shrink:0;}.activity-icon svg{width:16px;height:16px;stroke-width:2.2;}.activity-row span{color:var(--text-dim);line-height:1.25;flex:1;min-width:0;}.activity-row small{font-family:var(--font-mono);font-size:9px;color:var(--text-faint);white-space:nowrap;}.activity-remove{background:transparent;border:0;color:var(--text-faint);padding:5px;border-radius:6px;display:grid;place-items:center;}.activity-remove:hover{color:var(--danger);background:rgba(239,68,68,.1);}.activity-remove svg{width:14px;height:14px;}
+.streak-big{text-align:center;font:800 32px var(--font-display);margin:18px 0 4px;}.streak-big small{font:11px var(--font-body);color:var(--text-dim);display:block;margin-top:3px;}.streak-days{display:flex;justify-content:space-between;margin:27px 4px 8px;position:relative;}.streak-days:before{content:"";position:absolute;left:6px;right:6px;top:6px;height:1px;background:rgba(180,199,193,.5);}.streak-day{display:flex;flex-direction:column;gap:7px;align-items:center;font:9px var(--font-mono);color:var(--text-faint);position:relative;z-index:1;}.streak-day i{width:13px;height:13px;border:2px solid var(--text-faint);border-radius:50%;background:var(--bg-2);}.streak-day.on i{background:var(--emerald);border-color:var(--emerald);box-shadow:0 0 9px rgba(var(--emerald-rgb),.65);}
+.focus-card{background-image:linear-gradient(90deg,rgba(3,14,12,.96) 0%,rgba(3,14,12,.87) 48%,rgba(3,14,12,.38)),url('./assets/focus-desk.png');background-size:cover;background-position:center;}.focus-time{font:800 29px var(--font-display);margin:28px 0 4px;letter-spacing:-.6px;}.focus-card p{font-size:11.5px;color:var(--text-dim);}.focus-start{margin-top:20px;width:225px;max-width:100%;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--emerald);background:rgba(4,20,15,.68);color:var(--text);border-radius:12px;padding:9px 12px;font-weight:700;}.focus-start span{width:26px;height:26px;display:grid;place-items:center;border-radius:50%;background:var(--emerald);color:#04140f;}.focus-start span svg{width:15px;height:15px;fill:currentColor;stroke-width:2.4;}.focus-start:hover{background:rgba(var(--emerald-rgb),.2);box-shadow:0 0 20px rgba(var(--emerald-rgb),.2);}
+.timeline-settings-grid{display:grid;grid-template-columns:repeat(2,minmax(180px,1fr));gap:14px;width:min(520px,100%);}.timeline-settings-grid label{font-size:10.5px;color:var(--text-faint);display:flex;flex-direction:column;gap:6px;}.timeline-settings-grid input{width:100%;}
+.quick-stat-v2 .quick-stat-xp{position:relative;overflow:hidden;}.quick-stat-v2 .quick-stat-xp svg{width:23px;height:23px;stroke-width:2.25;}.quick-stat-v2 .quick-stat-xp b{position:absolute;inset:0;display:grid;place-items:center;margin:0;font:700 7px/1 var(--font-mono);letter-spacing:-.7px;color:var(--gold);transform:translateY(-.25px);}
 
 /* ---------- MAIN ---------- */
 .main{flex:1;min-width:0;height:100vh;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;}
@@ -132,8 +157,10 @@ button{cursor:pointer;}
   font-size:12px;font-family:var(--font-mono);color:var(--text-dim);
 }
 .pill b{color:var(--text);font-weight:600;}
+.pill.countdown{cursor:pointer;}.pill.countdown:hover{border-color:rgba(var(--emerald-rgb),.48);color:var(--text);}.pill.countdown svg{width:14px;height:14px;color:var(--text-faint);}
 .pill.xp{border-color:rgba(240,180,41,0.3);}
 .pill.xp b{color:var(--gold);}
+.top-xp-symbol{width:19px;height:19px;display:grid;place-items:center;position:relative;color:var(--gold);}.top-xp-symbol svg{width:19px;height:19px;stroke-width:2.15;}.top-xp-symbol b{position:absolute;font:700 6.5px var(--font-mono);letter-spacing:-.5px;line-height:1;}
 .pill.coin{border-color:rgba(var(--emerald-rgb),0.3);}
 .pill.coin b{color:var(--emerald);}
 .pill.countdown{border-color:rgba(var(--royal-rgb),0.3);}
@@ -146,6 +173,7 @@ button{cursor:pointer;}
   background:var(--glass);border:1px solid var(--glass-border);
   border-radius:var(--radius);backdrop-filter:blur(10px);
 }
+.glass-card.focus-card{background-image:linear-gradient(90deg,rgba(3,14,12,.96) 0%,rgba(3,14,12,.80) 48%,rgba(3,14,12,.15)),url('./assets/focus-desk-v2.png');background-size:cover;background-position:center;}
 .section-title{font-family:var(--font-display);font-weight:700;font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 
 /* Dashboard grid */
@@ -182,6 +210,12 @@ button{cursor:pointer;}
 .quick-card span{font-size:11px;color:var(--text-faint);}
 
 /* ---------- SYLLABUS VIEW ---------- */
+.syllabus-page{position:relative;isolation:isolate;min-height:calc(100vh - 155px);}
+.syllabus-page::before{content:"";position:absolute;inset:-26px -28px -60px;background-repeat:no-repeat;background-size:cover;background-position:center top;opacity:.16;mix-blend-mode:screen;filter:saturate(.72) contrast(.82);pointer-events:none;z-index:-1;}
+.syllabus-page.syllabus-maths::before{background-image:url('./assets/syllabus-maths-reference.png');}
+.syllabus-page.syllabus-physics::before{background-image:url('./assets/syllabus-physics-reference.png');opacity:.14;}
+.syllabus-page.syllabus-chemistry::before{background-image:url('./assets/syllabus-chemistry-reference.png');opacity:.15;}
+.syllabus-page.syllabus-maths .syl-title,.syllabus-page.syllabus-maths .group-title{color:#d8c6ff;}.syllabus-page.syllabus-physics .syl-title,.syllabus-page.syllabus-physics .group-title{color:#bdc7ff;}.syllabus-page.syllabus-chemistry .syl-title,.syllabus-page.syllabus-chemistry .group-title{color:#a8ece2;}
 .syl-header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;flex-wrap:wrap;}
 .syl-title-wrap{display:flex;align-items:center;gap:14px;}
 .syl-title{font-family:var(--font-display);font-weight:800;font-size:22px;}
@@ -391,6 +425,18 @@ button{cursor:pointer;}
 .chal-link{font-size:10.5px;color:var(--text-faint);text-decoration:underline;background:none;border:none;flex-shrink:0;}
 .chal-link:hover{color:var(--danger);}
 .reward-text{font-size:10px;color:var(--gold);font-family:var(--font-mono);flex:1;}
+
+/* ---------- CHALLENGE SYSTEM: VISUAL UPGRADE ---------- */
+.challenges-v2{display:flex;flex-direction:column;gap:12px;}.challenge-hero{min-height:142px;border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;position:relative;background-image:linear-gradient(90deg,rgba(4,12,10,.96) 0%,rgba(4,12,10,.66) 38%,rgba(4,12,10,.18) 100%),url('./assets/challenge-hero-mountain.png');background-size:cover;background-position:center 49%;}.challenge-hero-copy{position:relative;z-index:1;padding:23px 26px;max-width:460px;}.challenge-hero-copy h2{font:800 24px var(--font-display);line-height:1.12;}.challenge-hero-copy p{margin-top:5px;font:11px var(--font-mono);color:#87d8b8;letter-spacing:.35px;}.challenge-hero-mantra{position:absolute;z-index:1;right:22%;top:38px;text-align:left;font:italic 22px/1.35 var(--font-display);color:rgba(244,255,249,.92);}.challenge-hero-mantra strong{display:block;font-style:normal;color:#63e697;font-weight:600;}.challenge-achievements-title{color:#65dc94;margin:2px 0 0;font:700 16px var(--font-display);}.challenge-achievements{grid-template-columns:repeat(9,minmax(0,1fr));gap:10px;margin:0 0 8px;}.challenge-achievements .achv-badge{min-height:128px;padding:10px 7px;border-color:rgba(91,217,143,.2);background:rgba(2,12,10,.55);opacity:.58;filter:none;}.challenge-achievements .achv-badge:hover{transform:translateY(-3px);border-color:rgba(91,217,143,.6);box-shadow:0 8px 22px rgba(0,0,0,.25);}.challenge-achievements .achv-badge.unlocked{opacity:1;border-color:rgba(91,217,143,.55);background:rgba(8,38,26,.55);box-shadow:inset 0 0 20px rgba(37,196,118,.08),0 0 16px rgba(37,196,118,.08);}.challenge-achievements .achv-icon{width:42px;height:45px;border-radius:0;clip-path:polygon(50% 0,94% 24%,94% 76%,50% 100%,6% 76%,6% 24%);background:rgba(8,42,27,.8);color:#73f0a1;border:1px solid #5fe394;box-shadow:none;margin-bottom:7px;font-size:11px;text-shadow:0 0 8px rgba(95,227,148,.7);}.challenge-achievements .achv-badge.unlocked .achv-icon{background:rgba(13,70,38,.85);box-shadow:0 0 15px rgba(67,237,134,.35);}.challenge-achievements .achv-name{font-size:10px;color:#ecf8f0;}.challenge-achievements .achv-desc{font-size:9.5px;line-height:1.3;color:#9aad9f;}
+.challenge-band{position:relative;overflow:hidden;min-height:158px;border:1px solid var(--glass-border);border-radius:16px;background-color:#07100e;background-size:cover;background-position:center;isolation:isolate;}.challenge-band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,13,10,.96) 0%,rgba(4,13,10,.83) 35%,rgba(4,13,10,.22) 72%,rgba(4,13,10,.91) 100%);z-index:-1;}.challenge-band.daily{background-image:url('./assets/challenge-daily-sunrise.png');background-position:center 54%;}.challenge-band.weekly{background-image:url('./assets/challenge-weekly-progress.png');background-position:center 50%;}.challenge-band.monthly{background-image:url('./assets/challenge-monthly-space.png');background-position:center 56%;}.challenge-band-content{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:18px;padding:16px 20px;min-height:158px;}.challenge-band-title{display:flex;align-items:center;gap:13px;}.challenge-band-title .challenge-band-icon{width:32px;height:32px;color:#ffd18a;filter:drop-shadow(0 0 7px rgba(255,183,83,.55));flex-shrink:0;}.challenge-band-title h3{font:700 16px var(--font-display);color:#68e195;}.challenge-band-title p{font-size:10.5px;color:#9aafa2;margin-top:3px;}.challenge-band-progress{display:flex;align-items:center;gap:8px;margin-left:7px;font:600 11px var(--font-mono);color:#e9f4ed;}.challenge-band-progress .bar-track{width:104px;height:7px;}.challenge-band-action{display:flex;align-items:flex-end;justify-content:center;flex-direction:column;gap:12px;text-align:left;}.challenge-band-action .btn-add{min-width:205px;justify-content:center;box-shadow:0 7px 22px rgba(40,155,216,.24);}.challenge-band-quote{font-size:10.5px;line-height:1.5;color:#8fd7ab;max-width:205px;}.challenge-band-quote span{display:block;color:#a5b7aa;margin-top:3px;}.challenge-band-challenges{margin:10px 0 0 45px;max-width:520px;}.challenge-band-challenges .challenge-grid{margin:0;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}.challenge-band .challenge-card{padding:12px;background:rgba(4,12,10,.72);backdrop-filter:blur(5px);}.challenge-band .challenge-name{font-size:12px;}.challenge-empty{max-width:315px;padding:14px 15px;border-radius:13px;background:rgba(5,11,10,.62);border:1px solid rgba(255,255,255,.11);color:#90a49b;font-size:12px;line-height:1.4;}
+.challenge-footer{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid rgba(98,220,150,.24);border-radius:12px;background:rgba(7,26,19,.6);color:#aebdb5;font-size:12px;text-align:center;}.challenge-footer svg{width:20px;height:20px;color:#ffd184;filter:drop-shadow(0 0 5px rgba(255,191,92,.4));}.challenge-footer b{color:#70e79e;}
+@media(max-width:1100px){.challenge-achievements{grid-template-columns:repeat(5,minmax(0,1fr));}.challenge-hero-mantra{right:7%;}.challenge-band-content{grid-template-columns:1fr 205px;}.challenge-band-challenges{margin-left:0;}}
+@media(max-width:700px){.challenge-hero-mantra{display:none;}.challenge-achievements{grid-template-columns:repeat(3,minmax(0,1fr));}.challenge-band-content{grid-template-columns:1fr;}.challenge-band-action{align-items:flex-start;margin-left:45px;}.challenge-band-challenges{margin-left:0;}.challenge-footer{gap:10px;}}
+
+/* Continuous mountain scene, full-bleed challenge imagery, and focus diagrams. */
+.challenges-v2{position:relative;isolation:isolate;gap:12px;}.challenges-v2::before{content:"";position:absolute;z-index:0;top:-26px;left:-28px;right:-28px;height:390px;background-image:linear-gradient(180deg,rgba(4,12,10,.18) 0%,rgba(4,12,10,.18) 48%,rgba(4,12,10,.96) 100%),url('./assets/challenge-hero-mountain.png');background-size:cover;background-position:center 47%;pointer-events:none;}.challenges-v2>*{position:relative;z-index:1;}.challenge-hero{min-height:138px;border:0;border-radius:0;overflow:visible;background:none;}.challenge-hero-copy{padding:25px 26px;}.challenge-hero-mantra{right:22%;top:43px;text-shadow:0 2px 15px rgba(0,0,0,.85);}.challenge-brain{position:absolute;top:17px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#70dc98;text-align:center;font:8px var(--font-mono);letter-spacing:.25px;opacity:.82;text-shadow:0 0 10px rgba(85,220,141,.65);}.challenge-brain svg{width:52px;height:52px;stroke-width:1.35;filter:drop-shadow(0 0 9px rgba(72,219,132,.42));}.challenge-brain::before{content:"";position:absolute;width:74px;height:74px;border:1px solid rgba(86,224,143,.3);border-radius:50%;top:-10px;}.challenge-brain.left{left:44%;}.challenge-brain.right{right:2.5%;}.challenge-brain-labels{display:flex;justify-content:space-between;width:114px;color:#62c98c;}.challenge-brain-labels span:first-child{transform:translateX(-6px);}.challenge-brain-labels span:last-child{transform:translateX(6px);}.challenge-achievements-title{margin-top:-3px;}.challenge-achievements{margin-top:0;}.challenge-achievements .achv-badge{background:rgba(2,12,10,.46);}.challenge-band{border:0;border-radius:14px;box-shadow:none;}.challenge-band.daily{background-position:center 52%;}.challenge-band.weekly{background-position:center 49%;}.challenge-band.monthly{background-position:center 54%;}.challenge-band::before{background:linear-gradient(90deg,rgba(4,13,10,.93) 0%,rgba(4,13,10,.76) 34%,rgba(4,13,10,.12) 70%,rgba(4,13,10,.88) 100%);}.challenge-footer{border-color:rgba(98,220,150,.38);}
+@media(max-width:1180px){.challenge-brain.left{display:none;}.challenge-brain.right{right:1%;}.challenge-hero-mantra{right:18%;}}
+@media(max-width:780px){.challenges-v2::before{left:-16px;right:-16px;height:300px;}.challenge-brain{display:none;}.challenge-hero-mantra{display:none;}.challenge-hero-copy{padding-left:0;}.challenge-band{border-radius:12px;}}
 
 /* Calendar */
 .cal-nav{display:flex;align-items:center;gap:10px;}
@@ -652,6 +698,7 @@ button{cursor:pointer;}
 .profile-xp-fill{height:100%;background:linear-gradient(90deg,var(--emerald-deep),var(--emerald));}
 .profile-since{font-size:11px;color:var(--text-faint);font-family:var(--font-mono);margin-top:8px;}
 
+@media(max-width:1120px){.dash-hero-grid,.dash-two-col,.dash-three-col{grid-template-columns:1fr 1fr;}.dash-three-col>:last-child{grid-column:span 2;}.dash-hero-grid>.hero-card{grid-column:span 2;}.dashboard-v2 .subject-cards{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:900px){
   .analytics-grid{grid-template-columns:1fr;}
   .goals-grid{grid-template-columns:1fr;}
@@ -663,6 +710,10 @@ button{cursor:pointer;}
   .cal-holiday-label{display:none;}
   .sidebar{display:none;}
   .dash-grid{grid-template-columns:1fr;}
+  .dash-hero-grid,.dash-two-col,.dash-three-col{grid-template-columns:1fr;}
+  .dash-hero-grid>.hero-card,.dash-three-col>:last-child{grid-column:auto;}
+  .dashboard-v2 .subject-cards{grid-template-columns:1fr;}
+  .study-overview{flex-direction:column;align-items:flex-start;}
   .subject-cards{grid-template-columns:1fr;}
   .quick-grid{grid-template-columns:repeat(2,1fr);}
   .detail-inner{grid-template-columns:repeat(2,1fr);}
@@ -683,41 +734,41 @@ button{cursor:pointer;}
 
     <div class="nav-group">
       <div class="nav-label">Overview</div>
-      <button class="nav-item" data-view="dashboard"><span class="dot"></span>Dashboard</button>
+      <button class="nav-item" data-view="dashboard"><i class="nav-icon" data-lucide="trending-up"></i>Dashboard</button>
     </div>
 
     <div class="nav-group">
       <div class="nav-label">Syllabus</div>
-      <button class="nav-item" data-view="maths"><span class="dot"></span>Mathematics</button>
-      <button class="nav-item" data-view="physics"><span class="dot"></span>Physics</button>
-      <button class="nav-item" data-view="chemistry"><span class="dot"></span>Chemistry</button>
+      <button class="nav-item" data-view="maths"><i class="nav-icon" data-lucide="calculator"></i>Mathematics</button>
+      <button class="nav-item" data-view="physics"><i class="nav-icon" data-lucide="atom"></i>Physics</button>
+      <button class="nav-item" data-view="chemistry"><i class="nav-icon" data-lucide="flask-conical"></i>Chemistry</button>
     </div>
 
     <div class="nav-group">
       <div class="nav-label">Growth</div>
-      <button class="nav-item" data-view="challenges"><span class="dot"></span>Challenges</button>
-      <button class="nav-item" data-view="study"><span class="dot"></span>Study Hours</button>
-      <button class="nav-item" data-view="calendar"><span class="dot"></span>Calendar</button>
+      <button class="nav-item" data-view="challenges"><i class="nav-icon" data-lucide="flag"></i>Challenges</button>
+      <button class="nav-item" data-view="study"><i class="nav-icon" data-lucide="clock-3"></i>Study Hours</button>
+      <button class="nav-item" data-view="calendar"><i class="nav-icon" data-lucide="calendar-days"></i>Calendar</button>
     </div>
 
     <div class="nav-group">
       <div class="nav-label">Reflect</div>
-      <button class="nav-item" data-view="notes"><span class="dot"></span>Notes</button>
-      <button class="nav-item" data-view="dailyreview"><span class="dot"></span>Daily Review</button>
-      <button class="nav-item" data-view="routine"><span class="dot"></span>Routine Wheel</button>
+      <button class="nav-item" data-view="notes"><i class="nav-icon" data-lucide="notebook-text"></i>Notes</button>
+      <button class="nav-item" data-view="dailyreview"><i class="nav-icon" data-lucide="clipboard-check"></i>Daily Review</button>
+      <button class="nav-item" data-view="routine"><i class="nav-icon" data-lucide="rotate-cw"></i>Routine Wheel</button>
     </div>
 
     <div class="nav-group">
       <div class="nav-label">Plan</div>
-      <button class="nav-item" data-view="goals"><span class="dot"></span>Goals</button>
-      <button class="nav-item" data-view="rules"><span class="dot"></span>Rules</button>
-      <button class="nav-item" data-view="analytics"><span class="dot"></span>Analytics</button>
+      <button class="nav-item" data-view="goals"><i class="nav-icon" data-lucide="goal"></i>Goals</button>
+      <button class="nav-item" data-view="rules"><i class="nav-icon" data-lucide="shield-check"></i>Rules</button>
+      <button class="nav-item" data-view="analytics"><i class="nav-icon" data-lucide="chart-no-axes-column-increasing"></i>Analytics</button>
     </div>
 
     <div class="nav-group">
       <div class="nav-label">You</div>
-      <button class="nav-item" data-view="settings"><span class="dot"></span>Settings</button>
-      <button class="nav-item" data-view="profile"><span class="dot"></span>Profile</button>
+      <button class="nav-item" data-view="settings"><i class="nav-icon" data-lucide="settings-2"></i>Settings</button>
+      <button class="nav-item" data-view="profile"><i class="nav-icon" data-lucide="user-round"></i>Profile</button>
     </div>
 
     <div class="sidebar-foot">
@@ -733,8 +784,8 @@ button{cursor:pointer;}
         <div class="topbar-sub" id="topSub">System overview</div>
       </div>
       <div class="topbar-right">
-        <div class="pill countdown">→ Jan 1 2027 <b id="countdownVal">--</b></div>
-        <div class="pill xp">XP <b id="xpVal">0</b></div>
+        <button class="pill countdown" id="countdownPill" type="button" title="Set study dates in Settings"><span id="countdownDate">Jan 1 2027</span><b id="countdownVal">--</b><i data-lucide="calendar-days" aria-hidden="true"></i></button>
+        <div class="pill xp"><span class="top-xp-symbol"><i data-lucide="shield"></i><b>XP</b></span><b id="xpVal">0</b></div>
         <div class="pill coin">Coins <b id="coinVal">0</b></div>
       </div>
     </div>
@@ -782,6 +833,7 @@ button{cursor:pointer;}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 <script>
 /* ===================== STORAGE FALLBACK (critical - makes this work outside Claude.ai) =====================
    window.storage is an API provided by the Claude.ai artifact viewer. When this file is hosted
@@ -958,6 +1010,22 @@ const MOODS = ['Motivated','Focused','Neutral','Tired','Frustrated','Overwhelmed
 function fmtDate(d=new Date()){
   const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
   return `${y}-${m}-${day}`;
+}
+function parseDateInput(value){
+  const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(value||'');
+  return m ? new Date(Number(m[1]),Number(m[2])-1,Number(m[3])) : null;
+}
+function formatShortDate(value){
+  const d=parseDateInput(value);
+  return d ? d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}) : 'Set date';
+}
+function studyStartDate(){ return STATE.settings?.studyStartDate || '2026-07-01'; }
+function examEndDate(){ return STATE.settings?.examEndDate || '2027-01-01'; }
+function isInStudyWindow(dateString){ return !!dateString && dateString>=studyStartDate() && dateString<=examEndDate(); }
+function hydrateIcons(){
+  if(window.lucide && typeof window.lucide.createIcons==='function'){
+    try{ window.lucide.createIcons({attrs:{'stroke-width':'2','aria-hidden':'true'}}); }catch(e){ console.warn('Icons could not render',e); }
+  }
 }
 
 /* ===================== REUSABLE SVG CHARTS ===================== */
@@ -1137,7 +1205,7 @@ function defaultRule(overrides={}){
   return Object.assign({ id:'rule_'+Date.now()+'_'+Math.random().toString(36).slice(2,7), text:'', pinned:false, highlighted:false, createdDate:fmtDate() }, overrides);
 }
 function buildDefaultSettings(){
-  return { theme:'dark', accent:'emerald', reduceMotion:false, musicEnabled:false, musicVolume:0.5, musicTrack:'calm', notifEnabled:false, notifTime:'20:00', displayName:'Aspirant' };
+  return { theme:'dark', accent:'emerald', reduceMotion:false, musicEnabled:false, musicVolume:0.5, musicTrack:'calm', notifEnabled:false, notifTime:'20:00', displayName:'Aspirant', studyStartDate:'2026-07-01', examEndDate:'2027-01-01' };
 }
 
 function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');}
@@ -1168,7 +1236,7 @@ function buildDefaultSubject(subject){
 let STATE = {
   maths:null, physics:null, chemistry:null,
   profile:{xp:0, coins:0, level:1, streak:0, lastActiveDate:'', unlockedAchievements:[]},
-  challenges:null, study:null, recovery:null,
+  challenges:null, study:null, activity:[], recovery:null,
   notes:null, dailyReview:null, routine:null,
   goals:null, rules:null, settings:null
 };
@@ -1224,6 +1292,11 @@ async function loadState(){
   }catch(e){
     STATE.study = buildDefaultStudy();
   }
+  try{
+    const res = await window.storage.get('activity');
+    STATE.activity = res ? JSON.parse(res.value) : [];
+    if(!Array.isArray(STATE.activity)) STATE.activity=[];
+  }catch(e){ STATE.activity=[]; }
   STATE.notes = {};
   for(const subj of ['maths','physics','chemistry']){
     try{
@@ -1301,6 +1374,11 @@ async function saveStudy(){
     try{ await window.storage.set('study', JSON.stringify(STATE.study)); }catch(e){ console.error(e); }
   });
 }
+async function saveActivity(){
+  debouncedSave('activity', async ()=>{
+    try{ await window.storage.set('activity', JSON.stringify(STATE.activity)); }catch(e){ console.error(e); }
+  });
+}
 async function saveNotes(subject){
   debouncedSave('notes:'+subject, async ()=>{
     try{ await window.storage.set('notes:'+subject, JSON.stringify(STATE.notes[subject])); }catch(e){ console.error(e); }
@@ -1370,6 +1448,23 @@ function toast(msg){
   el.className='toast'; el.textContent=msg;
   wrap.appendChild(el);
   setTimeout(()=>{el.style.opacity='0'; el.style.transition='opacity .3s'; setTimeout(()=>el.remove(),300);}, 3200);
+}
+function pruneActivity(){
+  const cutoff=Date.now()-(7*24*60*60*1000);
+  const before=(STATE.activity||[]).length;
+  STATE.activity=(STATE.activity||[]).filter(a=>a && Number(a.ts)>=cutoff).slice(0,80);
+  return before!==STATE.activity.length;
+}
+function logActivity(icon, title, detail=''){
+  STATE.activity = STATE.activity || [];
+  pruneActivity();
+  STATE.activity.unshift({id:'act_'+Date.now()+'_'+Math.random().toString(36).slice(2,6), ts:Date.now(), icon, title, detail});
+  if(STATE.activity.length>80) STATE.activity.length=80;
+  saveActivity();
+}
+function timeAgo(ts){
+  const mins=Math.max(0,Math.floor((Date.now()-ts)/60000));
+  if(mins<1) return 'just now'; if(mins<60) return mins+'m ago'; const hrs=Math.floor(mins/60); if(hrs<24) return hrs+'h ago'; return Math.floor(hrs/24)+'d ago';
 }
 
 /* ===================== HELPERS: CHALLENGES ===================== */
@@ -1604,7 +1699,7 @@ function clampToStudyRange(d){
 }
 
 /* ===================== RENDER: DASHBOARD ===================== */
-function renderDashboard(){
+function renderDashboardLegacy(){
   const o = overallStats();
   const subs = [['maths','Mathematics'],['physics','Physics'],['chemistry','Chemistry']];
 
@@ -1651,6 +1746,67 @@ function renderDashboard(){
   document.querySelectorAll('.subj-card').forEach(el=>el.addEventListener('click',()=>switchView(el.dataset.view)));
 }
 
+function dashboardWeekSeries(kind){
+  const start=startOfWeek(new Date());
+  return Array.from({length:7},(_,i)=>{
+    const d=new Date(start); d.setDate(start.getDate()+i); const ds=fmtDate(d);
+    const value=!isInStudyWindow(ds) ? 0 : kind==='hours' ? hoursForDate(ds) : ['maths','physics','chemistry'].reduce((n,s)=>n+allChapters(s).filter(c=>c.completed&&c.completionDate===ds).length,0);
+    return {label:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i],value};
+  });
+}
+function dashboardWeekTotal(){ return dashboardWeekSeries('hours').reduce((sum,day)=>sum+day.value,0); }
+function dashboardFocusSeconds(){ return Math.max(0,STATE.study.timer.accumulatedSeconds+(STATE.study.timer.running?(Date.now()-STATE.study.timer.startTs)/1000:0)); }
+function formatFocusTime(seconds){ const total=Math.floor(seconds),h=Math.floor(total/3600),m=Math.floor(total%3600/60),s=total%60; return `${h} H ${m} min ${s} sec`; }
+function dashIcon(name, className=''){ return `<i data-lucide="${name}"${className?` class="${className}"`:''}></i>`; }
+function activityIconName(icon){
+  const map={'✓':'circle-check','↺':'rotate-ccw','◷':'clock-3','◉':'headphones','★':'trophy','✦':'scroll-text','•':'list','join':'scroll-text','goal':'goal','study':'clock-3','complete':'circle-check'};
+  return map[icon]||icon||'list';
+}
+function recentWeekActivity(){
+  if(pruneActivity()) saveActivity();
+  return (STATE.activity||[]).slice().sort((a,b)=>b.ts-a.ts);
+}
+function renderActivityRows(items, allowDelete=false){
+  if(!items.length){
+    return `<div class="activity-row"><i class="activity-icon">${dashIcon('scroll-text')}</i><span><b>Welcome to TFC</b><br>Your study journey starts here.</span><small>now</small></div><div class="activity-row"><i class="activity-icon">${dashIcon('clock-3')}</i><span><b>Log your first study session</b><br>Build momentum today.</span><small>next</small></div>`;
+  }
+  return items.map(a=>`<div class="activity-row"><i class="activity-icon">${dashIcon(activityIconName(a.icon))}</i><span><b>${escapeHtml(a.title)}</b><br>${escapeHtml(a.detail||'')}</span><small>${timeAgo(a.ts)}</small>${allowDelete?`<button class="activity-remove" type="button" data-remove-activity="${a.id}" title="Delete activity">${dashIcon('trash-2')}</button>`:''}</div>`).join('');
+}
+function openRecentActivityModal(){
+  const overlay=document.getElementById('formOverlay');
+  document.getElementById('formTitle').textContent='Recent Activity';
+  document.getElementById('formBody').innerHTML=`<p class="settings-row-sub" style="margin:0 0 10px;">Your activity from the last seven days. Delete anything you do not want to keep.</p><div class="activity-list">${renderActivityRows(recentWeekActivity(),true)}</div>`;
+  const submit=document.getElementById('formSubmit'), cancel=document.getElementById('formCancel');
+  submit.style.display='none'; cancel.textContent='Close';
+  document.querySelectorAll('[data-remove-activity]').forEach(btn=>btn.addEventListener('click',()=>{
+    STATE.activity=STATE.activity.filter(a=>a.id!==btn.dataset.removeActivity); saveActivity(); openRecentActivityModal(); if(currentView==='dashboard') renderDashboard();
+  }));
+  overlay.classList.add('show'); hydrateIcons();
+}
+function svgWeeklyProgressChart(data, opts={}){
+  const width=640,height=246,padL=38,padR=12,padT=8,padB=27,maxY=16;
+  const chartW=width-padL-padR,chartH=height-padT-padB,stepX=chartW/(data.length-1),color=opts.color||'#16dca0';
+  const pointFor=(value,index)=>[padL+index*stepX,padT+chartH-(Math.min(maxY,Math.max(0,value))/maxY)*chartH];
+  const points=data.map((d,i)=>pointFor(d.value,i));
+  const path=points.map((p,i)=>`${i?'L':'M'}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(' ');
+  const grid=Array.from({length:maxY+1},(_,n)=>{const y=padT+chartH-(n/maxY)*chartH;return `<line x1="${padL}" y1="${y.toFixed(1)}" x2="${width-padR}" y2="${y.toFixed(1)}" stroke="rgba(255,255,255,.055)" stroke-width="1"/><text x="${padL-9}" y="${(y+3).toFixed(1)}" text-anchor="end" fill="#80918c" font-size="8.5" font-family="JetBrains Mono,monospace">${n}</text>`;}).join('');
+  const labels=data.map((d,i)=>`<text x="${points[i][0].toFixed(1)}" y="${height-7}" text-anchor="middle" fill="#80918c" font-size="8.5" font-family="JetBrains Mono,monospace">${d.label}</text>`).join('');
+  const dots=points.map((p,i)=>`<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3.25" fill="${color}"><title>${data[i].label}: ${data[i].value.toFixed(1)} ${opts.unit||''}</title></circle>`).join('');
+  return `<svg viewBox="0 0 ${width} ${height}" width="100%" height="${height}" role="img" aria-label="Weekly progress chart with values from zero to sixteen">${grid}<path d="${path}" fill="none" stroke="${color}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>${dots}${labels}</svg>`;
+}
+function renderDashboard(){
+  const o=overallStats(), subs=[['maths','Mathematics','calculator'],['physics','Physics','atom'],['chemistry','Chemistry','flask-conical']], weekHours=dashboardWeekSeries('hours'), weekChapters=dashboardWeekSeries('chapters'), weekTotal=dashboardWeekTotal(), streak=computeStreak(), recent=recentWeekActivity().slice(0,3);
+  const subjectCards=subs.map(([key,label,icon])=>{const st=subjectStats(key);return `<div class="subj-card glass-card ${key}" data-view="${key}"><div class="subj-symbol">${dashIcon(icon)}</div><div class="subj-top"><span class="subj-name">${label}</span><span class="subj-pct">${st.pct}%</span></div><div class="bar-track"><div class="bar-fill" style="width:${st.pct}%"></div></div><div class="subj-foot"><span>${st.done}/${st.total} chapters</span><span class="${st.backlog?'backlog-warn':''}">${st.backlog?st.backlog+' backlog':'On track'}</span></div></div>`;}).join('');
+  const studyPercent=Math.min(100,Math.round((weekTotal/42)*100));
+  const weeklyNote=weekChapters.reduce((a,d)=>a+d.value,0)?'Keep the momentum moving this week.':'You have not completed any chapters this week.';
+  document.getElementById('content').innerHTML=`<div class="dashboard-v2"><div class="dash-hero-grid"><div class="glass-card hero-card"><div class="hero-aurora">${svgRing(o.pct,{size:132,label:'Overall'})}</div><div class="hero-stats"><h2>Welcome back,<br><em>${escapeHtml(STATE.settings.displayName||'Aspirant')}.</em></h2><p>${o.done} of ${o.total} chapters completed across Mathematics, Physics and Chemistry.<br><br>${o.backlog?o.backlog+' chapter(s) need attention.':'No backlog right now — great discipline.'}</p><div class="mini-stats"><div class="mini-stat"><b>${o.done}</b><span>Completed</span></div><div class="mini-stat"><b>${o.total-o.done}</b><span>Remaining</span></div><div class="mini-stat"><b style="color:${o.backlog?'var(--danger)':'var(--emerald)'}">${o.backlog}</b><span>Backlog</span></div></div></div></div><div class="glass-card dash-panel"><div class="dash-title">Subjects</div><div class="subject-cards">${subjectCards}</div></div></div><div class="glass-card quick-stats-v2"><div class="dash-title">Quick Stats</div><div class="quick-grid"><div class="quick-card glass-card quick-stat-v2"><i class="quick-stat-icon">${dashIcon('timer-reset')}</i><div><b>${o.pct}%</b><span>Syllabus Completion</span></div></div><div class="quick-card glass-card quick-stat-v2 level"><i class="quick-stat-icon">${dashIcon('chart-no-axes-column-increasing')}</i><div><b>${STATE.profile.level}</b><span>Current Level</span></div></div><div class="quick-card glass-card quick-stat-v2 xp"><i class="quick-stat-icon quick-stat-xp">${dashIcon('shield')}<b>XP</b></i><div><b>${STATE.profile.xp}</b><span>Total XP</span></div></div><div class="quick-card glass-card quick-stat-v2 backlog"><i class="quick-stat-icon">${dashIcon('briefcase-business')}</i><div><b>${o.backlog}</b><span>Chapters in Backlog</span></div></div></div></div><div class="dash-two-col"><div class="glass-card dash-panel dash-widget"><div class="dash-title">${dashIcon('clock-3','dash-icon')}Study Overview <span class="dash-toolbar">This Week</span></div><div class="study-overview">${svgRing(studyPercent,{size:180,stroke:15,big:weekTotal.toFixed(1)+'h',label:'Total Study This Week'})}<div class="study-legend"><div class="study-legend-row"><i style="background:#16c6b6"></i>Mathematics<b>0h</b></div><div class="study-legend-row"><i style="background:#5977ff"></i>Physics<b>0h</b></div><div class="study-legend-row"><i style="background:#d24cff"></i>Chemistry<b>0h</b></div><div class="study-legend-row"><i style="background:#ff5f71"></i>Revision<b>0h</b></div><div class="study-legend-row"><i style="background:#f0b429"></i>Test &amp; Practice<b>0h</b></div><div class="study-legend-row"><i style="background:#ffc14d"></i>Other<b>${weekTotal.toFixed(1)}h</b></div></div></div><div class="dash-note">${dashIcon('calendar-days')}Keep going! Consistency today builds success tomorrow.</div></div><div class="glass-card dash-panel dash-widget"><div class="dash-title">${dashIcon('trending-up','dash-icon')}Weekly Progress <select class="dash-toolbar" id="dashMetric"><option value="chapters">Chapters</option><option value="hours">Study hours</option></select></div><div class="dash-chart-wrap" id="dashWeeklyChart">${svgWeeklyProgressChart(weekChapters,{color:'#16dca0',unit:'chapters'})}</div><div class="dash-note" id="dashWeeklyNote">${weeklyNote}</div></div></div><div class="dash-three-col"><div class="glass-card dash-panel"><div class="activity-head"><div class="dash-title">${dashIcon('list','dash-icon')}Recent Activity</div><button class="activity-view-all" id="dashViewAllActivity" type="button">View All</button></div><div class="activity-list">${renderActivityRows(recent)}</div></div><div class="glass-card dash-panel"><div class="dash-title">${dashIcon('flame','dash-icon')}Streak</div><div class="streak-big">${streak}<small>day streak</small></div><div class="streak-days">${['M','T','W','T','F','S','S'].map((d,i)=>`<span class="streak-day ${weekHours[i].value>0?'on':''}"><i></i>${d}</span>`).join('')}</div><p style="text-align:center;font-size:11px;color:var(--text-faint);margin-top:25px;">Study daily to build your streak!</p></div><div class="glass-card dash-panel focus-card"><div class="dash-title">${dashIcon('headphones','dash-icon')}Focus Time</div><div class="focus-time" id="dashFocusTime">${formatFocusTime(dashboardFocusSeconds())}</div><p>Total Focus Time</p><button class="focus-start" id="dashFocusStart">${STATE.study.timer.running?'Pause Focus Session':'Start Focus Session'}<span>${dashIcon(STATE.study.timer.running?'pause':'play')}</span></button><p style="margin-top:14px;">Block distractions. Build your future.</p></div></div></div>`;
+  document.querySelectorAll('.subj-card').forEach(el=>el.addEventListener('click',()=>switchView(el.dataset.view)));
+  document.getElementById('dashViewAllActivity').addEventListener('click',openRecentActivityModal);
+  document.getElementById('dashMetric').addEventListener('change',e=>{const isHours=e.target.value==='hours',series=isHours?weekHours:weekChapters;document.getElementById('dashWeeklyChart').innerHTML=svgWeeklyProgressChart(series,{color:isHours?'#5977ff':'#16dca0',unit:isHours?'hours':'chapters'});document.getElementById('dashWeeklyNote').textContent=isHours?(weekTotal?'Keep the focus going this week.':'No study hours logged this week yet.'):series.reduce((a,d)=>a+d.value,0)?'Keep the momentum moving this week.':'You have not completed any chapters this week.';});
+  document.getElementById('dashFocusStart').addEventListener('click',()=>{if(STATE.study.timer.running){STATE.study.timer.accumulatedSeconds+=(Date.now()-STATE.study.timer.startTs)/1000;STATE.study.timer.running=false;STATE.study.timer.startTs=null;logActivity('pause','Paused focus session','Dashboard timer');}else{STATE.study.timer.running=true;STATE.study.timer.startTs=Date.now();logActivity('headphones','Started a focus session','Dashboard timer');}saveStudy();renderDashboard();});
+  hydrateIcons();
+}
+
 /* ===================== RENDER: SYLLABUS ===================== */
 function chapterMatchesFilters(c){
   if(searchTerm && !c.name.toLowerCase().includes(searchTerm.toLowerCase())) return false;
@@ -1661,7 +1817,7 @@ function chapterMatchesFilters(c){
 
 function renderSyllabus(subj, label){
   const st = subjectStats(subj);
-  let html = `
+  let html = `<div class="syllabus-page syllabus-${subj}">
   <div class="syl-header">
     <div class="syl-title-wrap">
       <div class="syl-title">${label}</div>
@@ -1701,6 +1857,7 @@ function renderSyllabus(subj, label){
       </div>
     </div>`;
   });
+  html += `</div>`;
 
   document.getElementById('content').innerHTML = html;
   attachSyllabusHandlers(subj);
@@ -1908,6 +2065,7 @@ function handleCompleteToggle(id, subj, chosenCompletionDate=''){
         celebrate(c.name, 50, 10);
       }
       saveSubject(subj);
+      logActivity('✓','Completed '+c.name, labelFor(subj)+' chapter');
       checkAchievements();
     };
   } else {
@@ -1924,6 +2082,7 @@ function handleCompleteToggle(id, subj, chosenCompletionDate=''){
       }
       recalcBacklog(c);
       saveSubject(subj);
+      logActivity('↺','Reopened '+c.name, labelFor(subj)+' chapter');
       checkAchievements();
       renderSyllabus(subj, labelFor(subj));
       toast(`"${c.name}" marked incomplete. Recovery plan suggested — see chapter notes.`);
@@ -1983,7 +2142,11 @@ function awardXP(xp, coins){
 }
 
 /* ===================== GENERIC FORM OVERLAY ===================== */
-function closeForm(){ document.getElementById('formOverlay').classList.remove('show'); }
+function closeForm(){
+  document.getElementById('formOverlay').classList.remove('show');
+  const submit=document.getElementById('formSubmit'), cancel=document.getElementById('formCancel');
+  submit.style.display=''; submit.textContent='Save'; cancel.textContent='Cancel';
+}
 
 /* ===================== RENDER: CHALLENGES ===================== */
 function renderChallenges(){
@@ -2026,6 +2189,58 @@ function renderChallenges(){
 
   document.getElementById('content').innerHTML = html;
   attachChallengeHandlers();
+}
+
+/* Redesigned challenge screen. This declaration intentionally replaces the earlier legacy renderer. */
+function renderChallenges(){
+  const sections = [
+    {key:'daily',label:'Daily',icon:'target',desc:'Small daily wins build unstoppable momentum.',quote:'“The secret of getting ahead is getting started.”',author:'— Mark Twain'},
+    {key:'weekly',label:'Weekly',icon:'calendar-days',desc:'Consistency every week. Progress every week.',quote:'“Small progress is still progress.”',author:'— Unknown'},
+    {key:'monthly',label:'Monthly',icon:'trophy',desc:'Big goals. Deep impact. Long term change.',quote:'“Don’t watch the clock; do what it does. Keep going.”',author:'— Sam Levenson'}
+  ];
+  let html = `<div class="challenges-v2">
+    <div class="challenge-hero">
+      <div class="challenge-hero-copy"><h2>Challenge System</h2><p>Daily &middot; Weekly &middot; Monthly targets</p></div>
+      <div class="challenge-hero-mantra">DISCIPLINE TODAY,<strong>FREEDOM TOMORROW.</strong></div>
+      <div class="challenge-brain left" aria-hidden="true">
+        <div class="challenge-brain-labels"><span>FOCUS</span><span>ACTION</span></div>
+        ${dashIcon('brain')}
+        <div class="challenge-brain-labels"><span>GROWTH</span><span>RESILIENCE</span></div>
+      </div>
+      <div class="challenge-brain right" aria-hidden="true">
+        <div class="challenge-brain-labels"><span>FOCUS</span><span>ACTION</span></div>
+        ${dashIcon('brain')}
+        <div class="challenge-brain-labels"><span>GROWTH</span><span>RESILIENCE</span></div>
+      </div>
+    </div>
+    <div class="challenge-achievements-title">Achievements</div>
+    <div class="achv-grid challenge-achievements">
+      ${ACHIEVEMENTS.map(a=>{
+        const unlocked = STATE.profile.unlockedAchievements.includes(a.id);
+        return `<div class="achv-badge glass-card ${unlocked?'unlocked':''}">
+          <div class="achv-icon">${a.abbr}</div><div class="achv-name">${a.name}</div><div class="achv-desc">${a.desc}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  sections.forEach(meta=>{
+    const list=STATE.challenges[meta.key], st=challengeStats(meta.key);
+    html += `<section class="challenge-band ${meta.key}">
+      <div class="challenge-band-content">
+        <div>
+          <div class="challenge-band-title">
+            ${dashIcon(meta.icon,'challenge-band-icon')}
+            <div><h3>${meta.label} Challenges <span class="challenge-band-progress"><span class="bar-track"><span class="bar-fill" style="width:${st.pct}%"></span></span>${st.done}/${st.total}</span></h3><p>${meta.desc}</p></div>
+          </div>
+          <div class="challenge-band-challenges">${list.length?`<div class="challenge-grid">${list.map(c=>renderChallengeCard(c)).join('')}</div>`:`<div class="challenge-empty">No ${meta.label.toLowerCase()} challenges yet. Add one to start earning XP.</div>`}</div>
+        </div>
+        <div class="challenge-band-action"><button class="btn-add" data-add-challenge="${meta.key}">+ New ${meta.label} Challenge</button><div class="challenge-band-quote">${meta.quote}<span>${meta.author}</span></div></div>
+      </div>
+    </section>`;
+  });
+  html += `<div class="challenge-footer">${dashIcon('badge-star')}<span>Challenge yourself every day, because <b>no one else</b> is going to do it for you.</span>${dashIcon('rocket')}</div></div>`;
+  document.getElementById('content').innerHTML = html;
+  attachChallengeHandlers();
+  hydrateIcons();
 }
 
 function renderChallengeCard(c){
@@ -2109,6 +2324,7 @@ function handleChallengeComplete(id){
         celebrate(c.name, c.rewardXP, c.rewardCoins);
       }
       saveChallenges();
+      logActivity('★','Completed '+c.name, 'Challenge completed');
       checkAchievements();
     };
   } else {
@@ -2123,6 +2339,7 @@ function handleChallengeComplete(id){
         awardXP(-c.rewardXP, -c.rewardCoins);
       }
       saveChallenges();
+      logActivity('↺','Reopened '+c.name, 'Challenge reopened');
       checkAchievements();
       toast(`"${c.name}" reopened.`);
     };
@@ -2325,6 +2542,7 @@ function attachStudyHandlers(){
     STATE.study.log[today] = (STATE.study.log[today]||0) + hrs;
     STATE.study.timer = {running:false, startTs:null, accumulatedSeconds:0};
     saveStudy();
+    logActivity('◷','Logged '+hrs.toFixed(1)+'h study time', 'Focus session');
     checkAchievements();
     toast(`Logged ${hrs.toFixed(2)}h to today.`);
     renderStudyHours();
@@ -2341,7 +2559,13 @@ function tickTimerDisplay(){
   el.textContent = `${h}:${m}:${s}`;
   el.classList.toggle('running', STATE.study.timer.running);
 }
-setInterval(()=>{ if(currentView==='study') tickTimerDisplay(); }, 1000);
+setInterval(()=>{
+  if(currentView==='study') tickTimerDisplay();
+  if(currentView==='dashboard'){
+    const el=document.getElementById('dashFocusTime');
+    if(el) el.textContent=formatFocusTime(dashboardFocusSeconds());
+  }
+}, 1000);
 
 function openLogHoursForm(){
   const overlay = document.getElementById('formOverlay');
@@ -2358,6 +2582,7 @@ function openLogHoursForm(){
     if(!hrs || hrs<=0){ toast('Enter a valid number of hours.'); return; }
     STATE.study.log[date] = Math.max(0,(STATE.study.log[date]||0) + hrs);
     saveStudy();
+    logActivity('◷','Logged '+hrs.toFixed(1)+'h study time', date);
     checkAchievements();
     closeForm();
     renderStudyHours();
@@ -3767,6 +3992,17 @@ function renderSettings(){
   </div>
 
   <div class="glass-card settings-section">
+    <div class="settings-section-title">Study Timeline</div>
+    <div class="settings-row">
+      <div><div class="settings-row-label">Start and end dates</div><div class="settings-row-sub">Dashboard progress, countdown and new weekly data respect this study window.</div></div>
+      <div class="timeline-settings-grid">
+        <label>Study start date<input type="date" class="settings-input" id="studyStartDateInput" value="${s.studyStartDate}"></label>
+        <label>Target end date<input type="date" class="settings-input" id="examEndDateInput" value="${s.examEndDate}"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="glass-card settings-section">
     <div class="settings-section-title">Data</div>
     <div class="settings-row">
       <div><div class="settings-row-label">Backup & Restore</div><div class="settings-row-sub">Everything is stored locally — export a copy regularly</div></div>
@@ -3827,6 +4063,17 @@ function attachSettingsHandlers(){
     STATE.settings.notifTime = e.target.value;
     saveSettings();
   });
+  const saveTimeline=()=>{
+    const start=document.getElementById('studyStartDateInput').value;
+    const end=document.getElementById('examEndDateInput').value;
+    if(!start || !end || end<=start){ toast('Choose an end date after your study start date.'); renderSettings(); return; }
+    STATE.settings.studyStartDate=start;
+    STATE.settings.examEndDate=end;
+    saveSettings(); tickCountdown();
+    toast('Study timeline updated.');
+  };
+  document.getElementById('studyStartDateInput').addEventListener('change',saveTimeline);
+  document.getElementById('examEndDateInput').addEventListener('change',saveTimeline);
   document.getElementById('exportBtn').addEventListener('click', exportBackup);
   document.getElementById('importBtn').addEventListener('click', importBackup);
   document.getElementById('resetBtn').addEventListener('click', ()=>{
@@ -3907,13 +4154,14 @@ function renderProfile(){
 function switchView(view){
   if(currentView==='notes' && view!=='notes'){ snapshotIfChanged(notesSubject, notesSelectedChapterId); }
   currentView = view;
+  document.querySelector('.app').dataset.view=view;
   document.querySelectorAll('.nav-item[data-view]').forEach(el=>el.classList.toggle('active', el.dataset.view===view));
   const titles = {
     dashboard:['Dashboard','System overview'],
     maths:['Mathematics','Syllabus tracker'], physics:['Physics','Syllabus tracker'], chemistry:['Chemistry','Syllabus tracker'],
     challenges:['Challenge System','Daily · Weekly · Monthly'],
     study:['Study Hours','Self study tracker'],
-    calendar:['Calendar','1 Jul – 31 Dec 2026'],
+    calendar:['Calendar',formatShortDate(studyStartDate())+' to '+formatShortDate(examEndDate())],
     notes:['Notes','Markdown · LaTeX · Autosave'],
     dailyreview:['Daily Review','Reflect on the day'],
     routine:['Routine Wheel','24 hours, your call'],
@@ -3926,6 +4174,7 @@ function switchView(view){
   document.getElementById('topTitle').textContent = titles[view][0];
   document.getElementById('topSub').textContent = titles[view][1];
   renderCurrentView();
+  hydrateIcons();
 }
 
 function renderCurrentView(){
@@ -3952,13 +4201,18 @@ function refreshTopbar(){
 }
 
 function tickCountdown(){
-  const target = new Date('2027-01-01T00:00:00');
+  const target = parseDateInput(examEndDate()) || new Date(2027,0,1);
+  target.setHours(0,0,0,0);
   const now = new Date();
   let diff = Math.max(0, target-now);
   const days = Math.floor(diff/86400000);
+  const dateLabel=document.getElementById('countdownDate');
+  if(dateLabel) dateLabel.textContent=formatShortDate(examEndDate());
   document.getElementById('countdownVal').textContent = days+'d';
 }
 setInterval(tickCountdown, 1000);
+
+document.getElementById('countdownPill').addEventListener('click', ()=>switchView('settings'));
 
 document.querySelectorAll('.nav-item[data-view]').forEach(el=>{
   el.addEventListener('click', ()=>switchView(el.dataset.view));
@@ -3991,6 +4245,7 @@ async function init(){
   tickCountdown();
   refreshTopbar();
   document.querySelector('.nav-item[data-view="dashboard"]').classList.add('active');
+  document.querySelector('.app').dataset.view='dashboard';
   renderDashboard();
   if(STATE.settings.musicEnabled){ try{ startMusic(); }catch(e){} }
 }
