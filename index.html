@@ -464,6 +464,35 @@ button{cursor:pointer;}
 .preview-pane blockquote{border-left:2px solid var(--emerald);padding-left:12px;color:var(--text-faint);margin-bottom:10px;}
 .preview-pane img{max-width:100%;border-radius:10px;margin:8px 0;}
 .preview-pane a{color:var(--royal);}
+.note-workspace{position:relative;min-height:430px;}
+.note-workspace .editor-textarea,.note-workspace .preview-pane{min-height:430px;}
+.note-images{position:absolute;inset:0;pointer-events:none;}
+.note-images:empty{display:none;}
+.note-image-card{position:absolute;min-width:120px;max-width:90%;border:1px solid var(--glass-border);border-radius:12px;padding:8px;background:rgba(13,18,16,.94);box-shadow:0 12px 28px rgba(0,0,0,.35);pointer-events:auto;}
+.note-image-stage{position:relative;width:100%;}
+.note-image-card img{display:block;width:100%;height:auto;max-height:560px;object-fit:contain;border-radius:8px;cursor:zoom-in;}
+.image-move-handle{position:absolute;z-index:2;top:5px;left:5px;width:26px;height:26px;border:1px solid var(--glass-border);border-radius:7px;background:rgba(0,0,0,.6);display:grid;place-items:center;cursor:grab;touch-action:none;}
+.image-move-handle:active{cursor:grabbing;}
+.image-settings-btn{position:absolute;z-index:2;top:5px;right:5px;width:26px;height:26px;border:1px solid var(--glass-border);border-radius:7px;background:rgba(0,0,0,.6);display:grid;place-items:center;font-size:17px;line-height:1;}
+.image-resize-grip{position:absolute;right:-5px;bottom:-5px;width:18px;height:18px;border:2px solid var(--bg-2);border-radius:50%;background:var(--emerald);cursor:nwse-resize;touch-action:none;box-shadow:0 0 10px rgba(var(--emerald-rgb),.6);}
+.note-image-menu{display:none;position:absolute;z-index:5;right:8px;top:42px;width:230px;padding:10px;border:1px solid var(--glass-border);border-radius:10px;background:var(--bg-2);box-shadow:0 12px 28px rgba(0,0,0,.5);}
+.note-image-menu.show{display:block;}
+.note-image-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--text-faint);}
+.note-image-controls button{padding:5px 9px;border-radius:7px;border:1px solid var(--glass-border);background:var(--glass);font-size:11px;}
+.note-image-controls .danger{color:var(--danger);}
+.note-image-controls select{background:var(--glass);border:1px solid var(--glass-border);border-radius:7px;padding:5px;font-size:11px;}
+.note-image-comment{width:100%;min-height:38px;margin-top:8px;padding:8px;border:1px solid var(--glass-border);border-radius:8px;background:rgba(0,0,0,.16);font-size:12px;resize:vertical;}
+.note-image-caption{margin:8px 2px 0;font-size:12px;line-height:1.4;color:var(--text-dim);white-space:pre-wrap;}
+.image-lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:28px;background:rgba(0,0,0,.88);z-index:500;}
+.image-lightbox.show{display:flex;}
+.image-lightbox img{max-width:96vw;max-height:90vh;object-fit:contain;border-radius:10px;box-shadow:0 18px 60px rgba(0,0,0,.65);}
+.image-lightbox button{position:absolute;top:18px;right:22px;width:38px;height:38px;border-radius:50%;border:1px solid var(--glass-border);background:var(--bg-2);font-size:22px;}
+.crop-preview-frame{height:390px;overflow:hidden;border-radius:10px;background:#050606;position:relative;margin:12px 0;display:flex;align-items:center;justify-content:center;touch-action:none;}
+.crop-preview-frame img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;pointer-events:none;}
+.crop-window{position:absolute;border:2px solid #fff;box-shadow:0 0 0 9999px rgba(0,0,0,.55);cursor:move;touch-action:none;}
+.crop-handle{position:absolute;width:14px;height:14px;background:#fff;border-radius:2px;touch-action:none;}
+.crop-handle.nw{left:-8px;top:-8px;cursor:nwse-resize}.crop-handle.ne{right:-8px;top:-8px;cursor:nesw-resize}.crop-handle.sw{left:-8px;bottom:-8px;cursor:nesw-resize}.crop-handle.se{right:-8px;bottom:-8px;cursor:nwse-resize}
+.crop-handle.n{left:50%;top:-8px;margin-left:-7px;cursor:ns-resize}.crop-handle.s{left:50%;bottom:-8px;margin-left:-7px;cursor:ns-resize}.crop-handle.e{right:-8px;top:50%;margin-top:-7px;cursor:ew-resize}.crop-handle.w{left:-8px;top:50%;margin-top:-7px;cursor:ew-resize}
 .preview-empty{color:var(--text-faint);font-size:12.5px;text-align:center;padding:60px 20px;}
 
 .history-panel{border-top:1px solid var(--glass-border);padding:14px 18px;max-height:220px;overflow-y:auto;}
@@ -745,6 +774,11 @@ button{cursor:pointer;}
 </div>
 
 <div class="toast-wrap" id="toastWrap"></div>
+
+<div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+  <button id="imageLightboxClose" aria-label="Close image">×</button>
+  <img id="imageLightboxImage" alt="Full-size note attachment">
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
@@ -1084,7 +1118,7 @@ function defaultChallenge(period, overrides={}){
 }
 function buildDefaultChallenges(){ return {daily:[], weekly:[], monthly:[]}; }
 function buildDefaultStudy(){ return {log:{}, timer:{running:false,startTs:null,accumulatedSeconds:0}}; }
-function defaultNote(){ return {content:'', tags:[], pinned:false, history:[], updatedAt:''}; }
+function defaultNote(){ return {content:'', images:[], tags:[], pinned:false, history:[], updatedAt:''}; }
 function buildDefaultNotes(){ return {}; }
 function buildDefaultDailyReview(){ return {}; }
 function buildDefaultRoutineDay(){ return {hours:Array.from({length:24},()=>({state:'pending', label:''})), celebrated:false}; }
@@ -1134,7 +1168,7 @@ function buildDefaultSubject(subject){
 let STATE = {
   maths:null, physics:null, chemistry:null,
   profile:{xp:0, coins:0, level:1, streak:0, lastActiveDate:'', unlockedAchievements:[]},
-  challenges:null, study:null,
+  challenges:null, study:null, recovery:null,
   notes:null, dailyReview:null, routine:null,
   goals:null, rules:null, settings:null
 };
@@ -1198,6 +1232,10 @@ async function loadState(){
     }catch(e){
       STATE.notes[subj] = buildDefaultNotes();
     }
+    Object.keys(STATE.notes[subj]).forEach(id=>{
+      const note = extractLegacyImages(STATE.notes[subj][id]);
+      STATE.notes[subj][id] = note;
+    });
   }
   try{
     const res = await window.storage.get('dailyReview');
@@ -1229,6 +1267,12 @@ async function loadState(){
   }catch(e){
     STATE.settings = buildDefaultSettings();
   }
+  try{
+    const res = await window.storage.get('recovery:reset');
+    const recovery = JSON.parse(res.value);
+    if(recovery && recovery.expiresAt && new Date(recovery.expiresAt)>new Date()) STATE.recovery=recovery;
+    else await window.storage.delete('recovery:reset');
+  }catch(e){ STATE.recovery=null; }
   applySettingsToDocument();
 }
 const __saveTimers = {};
@@ -1428,21 +1472,33 @@ function gatherDeadlines(){
   return map;
 }
 function checkAchievements(silent){
-  let newly=[];
-  ACHIEVEMENTS.forEach(a=>{
-    if(!STATE.profile.unlockedAchievements.includes(a.id) && a.check()){
-      STATE.profile.unlockedAchievements.push(a.id);
-      newly.push(a);
-    }
-  });
-  if(newly.length){
+  const previous = STATE.profile.unlockedAchievements || [];
+  const current = ACHIEVEMENTS.filter(a=>a.check()).map(a=>a.id);
+  const newly = ACHIEVEMENTS.filter(a=>current.includes(a.id) && !previous.includes(a.id));
+  const removed = ACHIEVEMENTS.filter(a=>previous.includes(a.id) && !current.includes(a.id));
+  STATE.profile.unlockedAchievements = current;
+  if(newly.length || removed.length){
     saveProfile();
-    if(!silent) newly.forEach(a=>toast(`Achievement unlocked: ${a.name}`));
+    if(!silent){
+      newly.forEach(a=>toast(`Achievement unlocked: ${a.name}`));
+      removed.forEach(a=>toast(`Achievement relocked: ${a.name}`));
+    }
   }
 }
 
 /* ===================== HELPERS: NOTES ===================== */
-function getNote(subject, chapterId){ return (STATE.notes[subject] && STATE.notes[subject][chapterId]) || defaultNote(); }
+function extractLegacyImages(note){
+  if(!note) return defaultNote();
+  if(!Array.isArray(note.images)) note.images=[];
+  const legacy = /!\[[^\]]*\]\((data:image\/(?:png|jpe?g|gif|webp);base64,[^)]+)\)/gi;
+  note.content = String(note.content||'').replace(legacy, (match, data)=>{
+    if(!note.images.some(img=>img.data===data)) note.images.push({id:'img_'+Date.now()+'_'+Math.random().toString(36).slice(2,7), data, width:30, x:5, y:180, visibility:'both', comment:''});
+    return '';
+  }).replace(/\n{3,}/g,'\n\n').trim();
+  note.images.forEach(img=>{ if(typeof img.width!=='number') img.width=30; if(typeof img.x!=='number') img.x=5; if(typeof img.y!=='number') img.y=180; if(!img.visibility) img.visibility='both'; if(typeof img.comment!=='string') img.comment=''; });
+  return note;
+}
+function getNote(subject, chapterId){ return extractLegacyImages((STATE.notes[subject] && STATE.notes[subject][chapterId]) || defaultNote()); }
 function setNote(subject, chapterId, note){ STATE.notes[subject][chapterId] = note; saveNotes(subject); }
 function snapshotIfChanged(subject, chapterId, force){
   if(!chapterId) return false;
@@ -1868,6 +1924,7 @@ function handleCompleteToggle(id, subj, chosenCompletionDate=''){
       }
       recalcBacklog(c);
       saveSubject(subj);
+      checkAchievements();
       renderSyllabus(subj, labelFor(subj));
       toast(`"${c.name}" marked incomplete. Recovery plan suggested — see chapter notes.`);
     };
@@ -2066,6 +2123,7 @@ function handleChallengeComplete(id){
         awardXP(-c.rewardXP, -c.rewardCoins);
       }
       saveChallenges();
+      checkAchievements();
       toast(`"${c.name}" reopened.`);
     };
   }
@@ -2430,11 +2488,12 @@ function renderNoteEditorHTML(){
   const chapterMeta = allChapters(notesSubject).find(c=>c.id===notesSelectedChapterId);
   const note = getNote(notesSubject, notesSelectedChapterId);
   const name = chapterMeta ? chapterMeta.name : '';
+  const canvasHeight = noteCanvasHeight(note, notesEditorTab);
   let body='';
   if(notesEditorTab==='write'){
-    body = `<textarea class="editor-textarea" id="noteTextarea" placeholder="Write in Markdown. Use $x^2$ or $$\\int f(x)\\,dx$$ for LaTeX...">${escapeHtml(note.content||'')}</textarea>`;
+    body = `<div class="note-workspace" style="min-height:${canvasHeight}px"><textarea class="editor-textarea" style="min-height:${canvasHeight}px" id="noteTextarea" placeholder="Write in Markdown. Use $x^2$ or $$\\int f(x)\\,dx$$ for LaTeX...">${escapeHtml(note.content||'')}</textarea>${renderNoteImages(note, 'write')}</div>`;
   } else {
-    body = `<div class="preview-pane" id="notePreviewPane">${renderMarkdownPreview(note.content)}</div>`;
+    body = `<div class="note-workspace" style="min-height:${canvasHeight}px"><div class="preview-pane" style="min-height:${canvasHeight}px" id="notePreviewPane">${renderMarkdownPreview(note.content)}</div>${renderNoteImages(note, 'preview')}</div>`;
   }
   return `
   <div class="editor-header">
@@ -2463,6 +2522,37 @@ function renderNoteEditorHTML(){
   ${body}
   ${notesShowHistory ? renderHistoryPanelHTML(note) : ''}
   `;
+}
+
+function noteCanvasHeight(note, section){
+  const visible=(note.images||[]).filter(img=>{ const v=img.visibility||'both'; return v==='both'||v===section; });
+  const bottom=visible.reduce((max,img)=>Math.max(max,(img.y||0)+Math.max(250,Math.round((img.width||30)*5.2))+105),430);
+  return Math.min(5000,bottom);
+}
+
+function renderNoteImages(note, section){
+  const images = (note.images || []).filter(img=>{
+    const visibility=img.visibility||'both';
+    return visibility==='both' || visibility===section;
+  });
+  if(!images.length) return '';
+  return `<div class="note-images">${images.map(img=>`
+    <div class="note-image-card" data-note-image-card="${img.id}" style="left:${Math.max(0,Math.min(85,img.x??5))}%;top:${Math.max(0,img.y??180)}px;width:${Math.max(10,Math.min(90,img.width||30))}%">
+      <div class="note-image-stage">
+        <button class="image-move-handle" title="Drag to move image" data-move-image="${img.id}">⠿</button>
+        <button class="image-settings-btn" title="Image options" data-toggle-image-menu="${img.id}">⋮</button>
+        <img src="${img.data}" alt="Note attachment" data-open-image="${img.id}">
+        <span class="image-resize-grip" title="Drag to resize" data-resize-image="${img.id}"></span>
+      </div>
+      <div class="note-image-menu" data-image-menu="${img.id}">
+        <div class="note-image-controls">
+          <select data-image-visibility="${img.id}" title="Where it appears"><option value="both" ${(img.visibility||'both')==='both'?'selected':''}>Write + Preview</option><option value="write" ${img.visibility==='write'?'selected':''}>Write only</option><option value="preview" ${img.visibility==='preview'?'selected':''}>Preview only</option></select>
+          <button data-crop-image="${img.id}">Crop</button><button class="danger" data-delete-image="${img.id}">Remove</button>
+        </div>
+        <textarea class="note-image-comment" data-image-comment="${img.id}" placeholder="Caption below image…">${escapeHtml(img.comment||'')}</textarea>
+      </div>
+      ${img.comment?`<div class="note-image-caption">${escapeHtml(img.comment)}</div>`:''}
+    </div>`).join('')}</div>`;
 }
 
 function renderHistoryPanelHTML(note){
@@ -2527,6 +2617,34 @@ function attachNotesHandlers(){
   const headingBtn=document.getElementById('btnHeading'); if(headingBtn) headingBtn.addEventListener('click', ()=>prefixLine('## '));
   const listBtn=document.getElementById('btnList'); if(listBtn) listBtn.addEventListener('click', ()=>prefixLine('- '));
   const imgBtn=document.getElementById('btnImage'); if(imgBtn) imgBtn.addEventListener('click', insertImageAtCursor);
+  document.querySelectorAll('[data-image-width]').forEach(el=>{
+    el.addEventListener('input', ()=>{
+      const note=getNote(notesSubject, notesSelectedChapterId), image=note.images.find(i=>i.id===el.dataset.imageWidth); if(!image) return;
+      image.width=parseInt(el.value); setNote(notesSubject, notesSelectedChapterId, note);
+      const card=el.closest('[data-note-image-card]'), stage=card.querySelector('.note-image-stage'), label=card.querySelector('[data-image-width-value]');
+      stage.style.width=image.width+'%'; label.textContent=image.width+'%';
+    });
+  });
+  document.querySelectorAll('[data-image-align]').forEach(el=>el.addEventListener('change', ()=>{
+    const {note,image}=currentNoteImage(el.dataset.imageAlign); if(!image) return; image.align=el.value; setNote(notesSubject,notesSelectedChapterId,note); renderNotes();
+  }));
+  document.querySelectorAll('[data-image-visibility]').forEach(el=>el.addEventListener('change', ()=>{
+    const {note,image}=currentNoteImage(el.dataset.imageVisibility); if(!image) return; image.visibility=el.value; setNote(notesSubject,notesSelectedChapterId,note); renderNotes();
+  }));
+  document.querySelectorAll('[data-toggle-image-menu]').forEach(el=>el.addEventListener('click', event=>{
+    event.stopPropagation(); const menu=el.closest('[data-note-image-card]').querySelector('[data-image-menu]');
+    document.querySelectorAll('[data-image-menu]').forEach(other=>{ if(other!==menu) other.classList.remove('show'); }); menu.classList.toggle('show');
+  }));
+  document.querySelectorAll('[data-image-comment]').forEach(el=>el.addEventListener('input', ()=>{
+    const {note,image}=currentNoteImage(el.dataset.imageComment); if(!image) return; image.comment=el.value; setNote(notesSubject,notesSelectedChapterId,note);
+  }));
+  document.querySelectorAll('[data-image-comment]').forEach(el=>el.addEventListener('blur', renderNotes));
+  setupNoteImageBoard();
+  document.querySelectorAll('[data-open-image]').forEach(el=>el.addEventListener('click', ()=>openImageLightbox(el.dataset.openImage)));
+  document.querySelectorAll('[data-crop-image]').forEach(el=>el.addEventListener('click', ()=>openImageCropModern(el.dataset.cropImage)));
+  document.querySelectorAll('[data-delete-image]').forEach(el=>el.addEventListener('click', ()=>{
+    const note=getNote(notesSubject, notesSelectedChapterId); note.images=note.images.filter(i=>i.id!==el.dataset.deleteImage); setNote(notesSubject, notesSelectedChapterId, note); renderNotes();
+  }));
 
   const saveVerBtn=document.getElementById('btnSaveVersion');
   if(saveVerBtn) saveVerBtn.addEventListener('click', ()=>{
@@ -2545,8 +2663,9 @@ function attachNotesHandlers(){
       const entry = note.history[idx];
       if(!entry) return;
       snapshotIfChanged(notesSubject, notesSelectedChapterId, true);
-      const note2 = getNote(notesSubject, notesSelectedChapterId);
-      note2.content = entry.content;
+       const note2 = getNote(notesSubject, notesSelectedChapterId);
+       note2.content = entry.content;
+       extractLegacyImages(note2);
       note2.updatedAt = new Date().toISOString();
       setNote(notesSubject, notesSelectedChapterId, note2);
       toast('Version restored.');
@@ -2605,6 +2724,42 @@ function prefixLine(mark){
   ta.setSelectionRange(start+mark.length, start+mark.length);
   handleNoteInput();
 }
+function setupNoteImageBoard(){
+  const ensureHeight=()=>{
+    const workspace=document.querySelector('.note-workspace'); if(!workspace) return;
+    let required=430; workspace.querySelectorAll('[data-note-image-card]').forEach(card=>{ required=Math.max(required,card.offsetTop+card.offsetHeight+80); });
+    if(required>workspace.clientHeight){ workspace.style.minHeight=required+'px'; const surface=workspace.querySelector('.editor-textarea,.preview-pane'); if(surface) surface.style.minHeight=required+'px'; }
+  };
+  document.querySelectorAll('[data-note-image-card] img').forEach(img=>img.addEventListener('load',ensureHeight));
+  setTimeout(ensureHeight,0);
+  document.querySelectorAll('[data-move-image]').forEach(handle=>{
+    handle.addEventListener('pointerdown', event=>{
+      event.preventDefault(); const id=handle.dataset.moveImage, card=handle.closest('[data-note-image-card]'), workspace=card.closest('.note-workspace');
+      const startX=event.clientX, startY=event.clientY, startLeft=card.offsetLeft, startTop=card.offsetTop;
+      handle.setPointerCapture(event.pointerId);
+      const move=e=>{
+        const maxLeft=Math.max(0,workspace.clientWidth-card.offsetWidth), maxTop=Math.max(0,workspace.clientHeight-card.offsetHeight);
+        const left=Math.max(0,Math.min(maxLeft,startLeft+e.clientX-startX)), top=Math.max(0,Math.min(maxTop,startTop+e.clientY-startY));
+        card.style.left=(left/workspace.clientWidth*100)+'%'; card.style.top=top+'px';
+      };
+      const up=()=>{ const {note,image}=currentNoteImage(id); if(image){ image.x=Math.round(card.offsetLeft/workspace.clientWidth*1000)/10; image.y=card.offsetTop; setNote(notesSubject,notesSelectedChapterId,note); } handle.removeEventListener('pointermove',move); handle.removeEventListener('pointerup',up); handle.removeEventListener('pointercancel',up); };
+      handle.addEventListener('pointermove',move); handle.addEventListener('pointerup',up); handle.addEventListener('pointercancel',up);
+    });
+  });
+  document.querySelectorAll('[data-resize-image]').forEach(grip=>{
+    grip.addEventListener('pointerdown', event=>{
+      event.preventDefault(); const id=grip.dataset.resizeImage, card=grip.closest('[data-note-image-card]'), workspace=card.closest('.note-workspace');
+      const startX=event.clientX, startWidth=card.getBoundingClientRect().width, parentWidth=workspace.clientWidth;
+      grip.setPointerCapture(event.pointerId);
+      const move=e=>{
+        const width=Math.max(10,Math.min(90,Math.round((startWidth+e.clientX-startX)/parentWidth*100)));
+        card.style.width=width+'%';
+      };
+      const up=()=>{ const {note,image}=currentNoteImage(id); if(image){ image.width=Math.round(card.getBoundingClientRect().width/workspace.clientWidth*100); setNote(notesSubject,notesSelectedChapterId,note); } grip.removeEventListener('pointermove',move); grip.removeEventListener('pointerup',up); grip.removeEventListener('pointercancel',up); };
+      grip.addEventListener('pointermove',move); grip.addEventListener('pointerup',up); grip.addEventListener('pointercancel',up);
+    });
+  });
+}
 function pickAndCompressImage(maxDim, quality, callback){
   const input = document.createElement('input');
   input.type='file'; input.accept='image/*';
@@ -2629,20 +2784,108 @@ function pickAndCompressImage(maxDim, quality, callback){
 }
 function insertImageAtCursor(){
   pickAndCompressImage(900, 0.82, (dataUrl)=>{
-    const ta = document.getElementById('noteTextarea'); if(!ta) return;
-    const pos = ta.selectionStart;
-    const insertion = `\n![image](${dataUrl})\n`;
-    ta.value = ta.value.slice(0,pos)+insertion+ta.value.slice(pos);
-    ta.focus();
-    ta.setSelectionRange(pos+insertion.length, pos+insertion.length);
-    handleNoteInput();
-    // Data URLs are deliberately long in Markdown source. Open the preview so
-    // the uploaded image is visible immediately instead of its encoded text.
-    notesEditorTab = 'preview';
+    const note=getNote(notesSubject, notesSelectedChapterId);
+    note.images.push({id:'img_'+Date.now()+'_'+Math.random().toString(36).slice(2,7), data:dataUrl, width:30, x:5, y:180, visibility:'both', comment:''});
+    note.updatedAt=new Date().toISOString();
+    setNote(notesSubject, notesSelectedChapterId, note);
     renderNotes();
-    toast('Image compressed, inserted, and shown in Preview.');
+    toast('Image added as a note attachment.');
   });
 }
+
+function currentNoteImage(id){
+  const note=getNote(notesSubject, notesSelectedChapterId);
+  return {note, image:(note.images||[]).find(i=>i.id===id)};
+}
+function openImageLightbox(id){
+  const {image}=currentNoteImage(id); if(!image) return;
+  const box=document.getElementById('imageLightbox');
+  document.getElementById('imageLightboxImage').src=image.data;
+  box.classList.add('show'); box.setAttribute('aria-hidden','false');
+}
+function closeImageLightbox(){
+  const box=document.getElementById('imageLightbox'); box.classList.remove('show'); box.setAttribute('aria-hidden','true');
+}
+function openImageCrop(id){
+  const {image}=currentNoteImage(id); if(!image) return;
+  const overlay=document.getElementById('formOverlay'), modal=document.getElementById('formModal');
+  document.getElementById('formTitle').textContent='Crop image';
+  document.getElementById('formBody').innerHTML=`
+    <p style="font-size:12px;color:var(--text-dim);margin-bottom:6px;">Drag the photo inside the frame like a phone editor, then use Zoom if needed. Saving permanently creates a cropped copy.</p>
+    <div class="crop-preview-frame"><img id="cropPreviewImage" src="${image.data}" alt="Crop preview"></div>
+    <label class="crop-control"><span>Zoom</span><input id="cropZoom" type="range" min="1" max="3" step="0.05" value="1"><b id="cropZoomVal">1.00×</b></label>
+    <label class="crop-control"><span>Horizontal</span><input id="cropX" type="range" min="0" max="100" value="50"><b id="cropXVal">50%</b></label>
+    <label class="crop-control"><span>Vertical</span><input id="cropY" type="range" min="0" max="100" value="50"><b id="cropYVal">50%</b></label>`;
+  const update=()=>{
+    const z=parseFloat(document.getElementById('cropZoom').value), x=parseInt(document.getElementById('cropX').value), y=parseInt(document.getElementById('cropY').value);
+    const preview=document.getElementById('cropPreviewImage'); preview.style.transform=`scale(${z}) translate(${(50-x)/z}%,${(50-y)/z}%)`;
+    document.getElementById('cropZoomVal').textContent=z.toFixed(2)+'×'; document.getElementById('cropXVal').textContent=x+'%'; document.getElementById('cropYVal').textContent=y+'%';
+  };
+  ['cropZoom','cropX','cropY'].forEach(key=>document.getElementById(key).addEventListener('input',update)); update();
+  const cropImage=document.getElementById('cropPreviewImage');
+  cropImage.addEventListener('pointerdown', event=>{
+    event.preventDefault(); const sx=event.clientX, sy=event.clientY, startX=parseInt(document.getElementById('cropX').value), startY=parseInt(document.getElementById('cropY').value);
+    cropImage.setPointerCapture(event.pointerId);
+    const move=e=>{
+      const frame=cropImage.parentElement.getBoundingClientRect(), zoom=parseFloat(document.getElementById('cropZoom').value);
+      const sensitivity=100/Math.max(1,(zoom-1)*Math.max(frame.width,frame.height)/80);
+      document.getElementById('cropX').value=Math.max(0,Math.min(100,Math.round(startX-(e.clientX-sx)*sensitivity)));
+      document.getElementById('cropY').value=Math.max(0,Math.min(100,Math.round(startY-(e.clientY-sy)*sensitivity)));
+      update();
+    };
+    const up=()=>{ cropImage.removeEventListener('pointermove',move); cropImage.removeEventListener('pointerup',up); cropImage.removeEventListener('pointercancel',up); };
+    cropImage.addEventListener('pointermove',move); cropImage.addEventListener('pointerup',up); cropImage.addEventListener('pointercancel',up);
+  });
+  document.getElementById('formSubmit').onclick=()=>{
+    const z=parseFloat(document.getElementById('cropZoom').value), x=parseInt(document.getElementById('cropX').value), y=parseInt(document.getElementById('cropY').value);
+    const original=new Image();
+    original.onload=()=>{
+      const sw=original.width/z, sh=original.height/z;
+      const sx=(original.width-sw)*(x/100), sy=(original.height-sh)*(y/100);
+      const canvas=document.createElement('canvas'); canvas.width=Math.round(sw); canvas.height=Math.round(sh);
+      canvas.getContext('2d').drawImage(original,sx,sy,sw,sh,0,0,canvas.width,canvas.height);
+      const current=currentNoteImage(id); if(current.image){ current.image.data=canvas.toDataURL('image/jpeg',.9); setNote(notesSubject,notesSelectedChapterId,current.note); }
+      closeForm(); renderNotes(); toast('Image crop saved.');
+    };
+    original.src=image.data;
+  };
+  modal.classList.remove('danger-modal'); modal.classList.add('success-modal'); overlay.classList.add('show');
+}
+
+function openImageCropModern(id){
+  const {image}=currentNoteImage(id); if(!image) return;
+  const overlay=document.getElementById('formOverlay'), modal=document.getElementById('formModal');
+  document.getElementById('formTitle').textContent='Crop image';
+  document.getElementById('formBody').innerHTML=`<p style="font-size:12px;color:var(--text-dim);margin-bottom:6px;">Move the white crop frame or drag any corner and middle-edge handle, like a phone photo editor.</p><div class="crop-preview-frame"><img id="cropPreviewImage" src="${image.data}" alt="Crop preview"><div class="crop-window" id="cropWindow"><i class="crop-handle nw" data-crop-handle="nw"></i><i class="crop-handle n" data-crop-handle="n"></i><i class="crop-handle ne" data-crop-handle="ne"></i><i class="crop-handle e" data-crop-handle="e"></i><i class="crop-handle se" data-crop-handle="se"></i><i class="crop-handle s" data-crop-handle="s"></i><i class="crop-handle sw" data-crop-handle="sw"></i><i class="crop-handle w" data-crop-handle="w"></i></div></div>`;
+  const frame=document.querySelector('.crop-preview-frame'), preview=document.getElementById('cropPreviewImage'), win=document.getElementById('cropWindow');
+  const crop={x:10,y:10,w:80,h:80};
+  const bounds=()=>{ const r=frame.getBoundingClientRect(), s=Math.min(r.width/preview.naturalWidth,r.height/preview.naturalHeight), w=preview.naturalWidth*s,h=preview.naturalHeight*s; return {left:(r.width-w)/2,top:(r.height-h)/2,width:w,height:h}; };
+  const draw=()=>{ if(!preview.naturalWidth) return; const b=bounds(); win.style.left=(b.left+b.width*crop.x/100)+'px'; win.style.top=(b.top+b.height*crop.y/100)+'px'; win.style.width=(b.width*crop.w/100)+'px'; win.style.height=(b.height*crop.h/100)+'px'; };
+  preview.addEventListener('load',draw); setTimeout(draw,0);
+  const bindDrag=(el,mode)=>el.addEventListener('pointerdown',event=>{
+    event.preventDefault(); event.stopPropagation(); const sx=event.clientX,sy=event.clientY,start={...crop},b=bounds(); el.setPointerCapture(event.pointerId);
+    const move=e=>{ const dx=(e.clientX-sx)/b.width*100,dy=(e.clientY-sy)/b.height*100;
+      if(mode==='move'){ crop.x=Math.max(0,Math.min(100-start.w,start.x+dx)); crop.y=Math.max(0,Math.min(100-start.h,start.y+dy)); }
+      else { crop.x=start.x; crop.y=start.y; crop.w=start.w; crop.h=start.h; if(mode.includes('w')){ crop.x=Math.max(0,Math.min(start.x+start.w-8,start.x+dx)); crop.w=start.w-(crop.x-start.x); } if(mode.includes('e')) crop.w=Math.max(8,Math.min(100-crop.x,start.w+dx)); if(mode.includes('n')){ crop.y=Math.max(0,Math.min(start.y+start.h-8,start.y+dy)); crop.h=start.h-(crop.y-start.y); } if(mode.includes('s')) crop.h=Math.max(8,Math.min(100-crop.y,start.h+dy)); }
+      draw();
+    };
+    const up=()=>{ el.removeEventListener('pointermove',move); el.removeEventListener('pointerup',up); el.removeEventListener('pointercancel',up); };
+    el.addEventListener('pointermove',move); el.addEventListener('pointerup',up); el.addEventListener('pointercancel',up);
+  });
+  bindDrag(win,'move'); document.querySelectorAll('[data-crop-handle]').forEach(handle=>bindDrag(handle,handle.dataset.cropHandle));
+  document.getElementById('formSubmit').onclick=()=>{
+    const original=new Image(); original.onload=()=>{
+      const sx=original.width*crop.x/100,sy=original.height*crop.y/100,sw=original.width*crop.w/100,sh=original.height*crop.h/100;
+      const canvas=document.createElement('canvas'); canvas.width=Math.round(sw); canvas.height=Math.round(sh); canvas.getContext('2d').drawImage(original,sx,sy,sw,sh,0,0,canvas.width,canvas.height);
+      const current=currentNoteImage(id); if(current.image){ current.image.data=canvas.toDataURL('image/jpeg',.9); setNote(notesSubject,notesSelectedChapterId,current.note); }
+      closeForm(); renderNotes(); toast('Image crop saved.');
+    }; original.src=image.data;
+  };
+  modal.classList.remove('danger-modal'); modal.classList.add('success-modal'); overlay.classList.add('show');
+}
+
+document.getElementById('imageLightboxClose').addEventListener('click', closeImageLightbox);
+document.getElementById('imageLightbox').addEventListener('click', e=>{ if(e.target===e.currentTarget) closeImageLightbox(); });
 
 /* ===================== RENDER: DAILY REVIEW ===================== */
 function reviewSeries(field){
