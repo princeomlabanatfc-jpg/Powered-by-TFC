@@ -121,7 +121,7 @@ button{cursor:pointer;}
 .dashboard-v2{display:flex;flex-direction:column;gap:16px;}
 .dash-hero-grid{display:grid;grid-template-columns:minmax(420px,1.05fr) 1.45fr;gap:16px;}
 .dashboard-v2 .hero-card{min-height:262px;padding:0;overflow:hidden;position:relative;background:#07100e;}
-.hero-aurora{position:absolute;inset:0;width:48%;overflow:hidden;background-image:linear-gradient(90deg,rgba(2,12,11,.10),rgba(2,12,11,.72)),url('./images/hero.png');background-position:center;background-size:cover;}
+.hero-aurora{position:absolute;inset:0;width:48%;overflow:hidden;background-image:linear-gradient(90deg,rgba(2,12,11,.10),rgba(2,12,11,.72)),url('./assets/aurora-hero.png');background-position:center;background-size:cover;}
 .hero-aurora:before,.hero-aurora:after{display:none;}
 .hero-aurora .ring-wrap{position:absolute;left:42px;bottom:20px;z-index:2;}
 .dashboard-v2 .hero-stats{position:relative;z-index:2;margin-left:48%;padding:30px 24px 24px;gap:12px;}
@@ -135,9 +135,9 @@ button{cursor:pointer;}
 .dash-chart-wrap{height:248px;padding:2px 0 0;position:relative;}.dash-chart-wrap svg{display:block;overflow:visible;}.dash-note{margin-top:10px;padding:11px 13px;border-radius:8px;background:rgba(var(--emerald-rgb),.08);color:var(--text-dim);font-size:11px;}.dash-note svg{width:14px;height:14px;vertical-align:-3px;margin-right:6px;color:var(--emerald);}
 .activity-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}.activity-head .dash-title{margin-bottom:14px;}.activity-view-all{margin-left:auto;color:var(--emerald);background:transparent;border:0;font-size:10.5px;font-weight:700;padding:0;}.activity-view-all:hover{text-decoration:underline;}.activity-list{display:flex;flex-direction:column;gap:7px;}.activity-row{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:11px;}.activity-row:last-child{border-bottom:none;}.activity-icon{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(var(--emerald-rgb),.1);color:var(--emerald);flex-shrink:0;}.activity-icon svg{width:16px;height:16px;stroke-width:2.2;}.activity-row span{color:var(--text-dim);line-height:1.25;flex:1;min-width:0;}.activity-row small{font-family:var(--font-mono);font-size:9px;color:var(--text-faint);white-space:nowrap;}.activity-remove{background:transparent;border:0;color:var(--text-faint);padding:5px;border-radius:6px;display:grid;place-items:center;}.activity-remove:hover{color:var(--danger);background:rgba(239,68,68,.1);}.activity-remove svg{width:14px;height:14px;}
 .streak-big{text-align:center;font:800 32px var(--font-display);margin:18px 0 4px;}.streak-big small{font:11px var(--font-body);color:var(--text-dim);display:block;margin-top:3px;}.streak-days{display:flex;justify-content:space-between;margin:27px 4px 8px;position:relative;}.streak-days:before{content:"";position:absolute;left:6px;right:6px;top:6px;height:1px;background:rgba(180,199,193,.5);}.streak-day{display:flex;flex-direction:column;gap:7px;align-items:center;font:9px var(--font-mono);color:var(--text-faint);position:relative;z-index:1;}.streak-day i{width:13px;height:13px;border:2px solid var(--text-faint);border-radius:50%;background:var(--bg-2);}.streak-day.on i{background:var(--emerald);border-color:var(--emerald);box-shadow:0 0 9px rgba(var(--emerald-rgb),.65);}
-.focus-card{background-image:linear-gradient(90deg,rgba(3,14,12,.96) 0%,rgba(3,14,12,.87) 48%,rgba(3,14,12,.38)),url('./images/focusdesk.png');background-size:cover;background-position:center;}.focus-time{font:800 29px var(--font-display);margin:28px 0 4px;letter-spacing:-.6px;}.focus-card p{font-size:11.5px;color:var(--text-dim);}.focus-start{margin-top:20px;width:225px;max-width:100%;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--emerald);background:rgba(4,20,15,.68);color:var(--text);border-radius:12px;padding:9px 12px;font-weight:700;}.focus-start span{width:26px;height:26px;display:grid;place-items:center;border-radius:50%;background:var(--emerald);color:#04140f;}.focus-start span svg{width:15px;height:15px;fill:currentColor;stroke-width:2.4;}.focus-start:hover{background:rgba(var(--emerald-rgb),.2);box-shadow:0 0 20px rgba(var(--emerald-rgb),.2);}
+.focus-card{background-image:linear-gradient(90deg,rgba(3,14,12,.96) 0%,rgba(3,14,12,.87) 48%,rgba(3,14,12,.38)),url('./assets/focus-desk.png');background-size:cover;background-position:center;}.focus-time{font:800 29px var(--font-display);margin:28px 0 4px;letter-spacing:-.6px;}.focus-card p{font-size:11.5px;color:var(--text-dim);}.focus-start{margin-top:20px;width:225px;max-width:100%;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--emerald);background:rgba(4,20,15,.68);color:var(--text);border-radius:12px;padding:9px 12px;font-weight:700;}.focus-start span{width:26px;height:26px;display:grid;place-items:center;border-radius:50%;background:var(--emerald);color:#04140f;}.focus-start span svg{width:15px;height:15px;fill:currentColor;stroke-width:2.4;}.focus-start:hover{background:rgba(var(--emerald-rgb),.2);box-shadow:0 0 20px rgba(var(--emerald-rgb),.2);}
 .timeline-settings-grid{display:grid;grid-template-columns:repeat(2,minmax(180px,1fr));gap:14px;width:min(520px,100%);}.timeline-settings-grid label{font-size:10.5px;color:var(--text-faint);display:flex;flex-direction:column;gap:6px;}.timeline-settings-grid input{width:100%;}
-.quick-stat-v2 .quick-stat-xp{position:relative;overflow:hidden;}.quick-stat-v2 .quick-stat-xp svg{width:23px;height:23px;stroke-width:2.25;}.quick-stat-v2 .quick-stat-xp b{position:absolute;inset:0;display:grid;place-items:center;margin:0;font:700 7px/1 var(--font-mono);letter-spacing:-.7px;color:var(--gold);transform:translateY(-.25px);}
+.quick-stat-v2 .quick-stat-xp{position:relative;display:grid;place-items:center;overflow:hidden;font-style:normal;}.quick-stat-v2 .quick-stat-xp svg{position:absolute;inset:5px;width:24px;height:24px;stroke-width:2.25;}.quick-stat-v2 .quick-stat-xp b{position:absolute;inset:0;display:grid;place-items:center;margin:0;font:700 7px/1 var(--font-mono);letter-spacing:-.7px;color:var(--gold);transform:none;z-index:1;pointer-events:none;}
 
 /* ---------- MAIN ---------- */
 .main{flex:1;min-width:0;height:100vh;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;}
@@ -173,7 +173,7 @@ button{cursor:pointer;}
   background:var(--glass);border:1px solid var(--glass-border);
   border-radius:var(--radius);backdrop-filter:blur(10px);
 }
-.glass-card.focus-card{background-image:linear-gradient(90deg,rgba(3,14,12,.96) 0%,rgba(3,14,12,.80) 48%,rgba(3,14,12,.15)),url('./images/focusdesk.png');background-size:cover;background-position:center;}
+.glass-card.focus-card{background-image:linear-gradient(90deg,rgba(3,14,12,.96) 0%,rgba(3,14,12,.80) 48%,rgba(3,14,12,.15)),url('./assets/focus-desk-v2.png');background-size:cover;background-position:center;}
 .section-title{font-family:var(--font-display);font-weight:700;font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 
 /* Dashboard grid */
@@ -427,16 +427,37 @@ button{cursor:pointer;}
 .reward-text{font-size:10px;color:var(--gold);font-family:var(--font-mono);flex:1;}
 
 /* ---------- CHALLENGE SYSTEM: VISUAL UPGRADE ---------- */
-.challenges-v2{display:flex;flex-direction:column;gap:12px;}.challenge-hero{min-height:142px;border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;position:relative;background-image:linear-gradient(90deg,rgba(4,12,10,.96) 0%,rgba(4,12,10,.66) 38%,rgba(4,12,10,.18) 100%),url('./images/heromountain.png');background-size:cover;background-position:center 49%;}.challenge-hero-copy{position:relative;z-index:1;padding:23px 26px;max-width:460px;}.challenge-hero-copy h2{font:800 24px var(--font-display);line-height:1.12;}.challenge-hero-copy p{margin-top:5px;font:11px var(--font-mono);color:#87d8b8;letter-spacing:.35px;}.challenge-hero-mantra{position:absolute;z-index:1;right:22%;top:38px;text-align:left;font:italic 22px/1.35 var(--font-display);color:rgba(244,255,249,.92);}.challenge-hero-mantra strong{display:block;font-style:normal;color:#63e697;font-weight:600;}.challenge-achievements-title{color:#65dc94;margin:2px 0 0;font:700 16px var(--font-display);}.challenge-achievements{grid-template-columns:repeat(9,minmax(0,1fr));gap:10px;margin:0 0 8px;}.challenge-achievements .achv-badge{min-height:128px;padding:10px 7px;border-color:rgba(91,217,143,.2);background:rgba(2,12,10,.55);opacity:.58;filter:none;}.challenge-achievements .achv-badge:hover{transform:translateY(-3px);border-color:rgba(91,217,143,.6);box-shadow:0 8px 22px rgba(0,0,0,.25);}.challenge-achievements .achv-badge.unlocked{opacity:1;border-color:rgba(91,217,143,.55);background:rgba(8,38,26,.55);box-shadow:inset 0 0 20px rgba(37,196,118,.08),0 0 16px rgba(37,196,118,.08);}.challenge-achievements .achv-icon{width:42px;height:45px;border-radius:0;clip-path:polygon(50% 0,94% 24%,94% 76%,50% 100%,6% 76%,6% 24%);background:rgba(8,42,27,.8);color:#73f0a1;border:1px solid #5fe394;box-shadow:none;margin-bottom:7px;font-size:11px;text-shadow:0 0 8px rgba(95,227,148,.7);}.challenge-achievements .achv-badge.unlocked .achv-icon{background:rgba(13,70,38,.85);box-shadow:0 0 15px rgba(67,237,134,.35);}.challenge-achievements .achv-name{font-size:10px;color:#ecf8f0;}.challenge-achievements .achv-desc{font-size:9.5px;line-height:1.3;color:#9aad9f;}
-.challenge-band{position:relative;overflow:hidden;min-height:158px;border:1px solid var(--glass-border);border-radius:16px;background-color:#07100e;background-size:cover;background-position:center;isolation:isolate;}.challenge-band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,13,10,.96) 0%,rgba(4,13,10,.83) 35%,rgba(4,13,10,.22) 72%,rgba(4,13,10,.91) 100%);z-index:-1;}.challenge-band.daily{background-image:url('./images/dailysunraise.png');background-position:center 54%;}.challenge-band.weekly{background-image:url('./images/weelyprogrees.png');background-position:center 50%;}.challenge-band.monthly{background-image:url('./images/montlyspace.png');background-position:center 56%;}.challenge-band-content{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:18px;padding:16px 20px;min-height:158px;}.challenge-band-title{display:flex;align-items:center;gap:13px;}.challenge-band-title .challenge-band-icon{width:32px;height:32px;color:#ffd18a;filter:drop-shadow(0 0 7px rgba(255,183,83,.55));flex-shrink:0;}.challenge-band-title h3{font:700 16px var(--font-display);color:#68e195;}.challenge-band-title p{font-size:10.5px;color:#9aafa2;margin-top:3px;}.challenge-band-progress{display:flex;align-items:center;gap:8px;margin-left:7px;font:600 11px var(--font-mono);color:#e9f4ed;}.challenge-band-progress .bar-track{width:104px;height:7px;}.challenge-band-action{display:flex;align-items:flex-end;justify-content:center;flex-direction:column;gap:12px;text-align:left;}.challenge-band-action .btn-add{min-width:205px;justify-content:center;box-shadow:0 7px 22px rgba(40,155,216,.24);}.challenge-band-quote{font-size:10.5px;line-height:1.5;color:#8fd7ab;max-width:205px;}.challenge-band-quote span{display:block;color:#a5b7aa;margin-top:3px;}.challenge-band-challenges{margin:10px 0 0 45px;max-width:520px;}.challenge-band-challenges .challenge-grid{margin:0;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}.challenge-band .challenge-card{padding:12px;background:rgba(4,12,10,.72);backdrop-filter:blur(5px);}.challenge-band .challenge-name{font-size:12px;}.challenge-empty{max-width:315px;padding:14px 15px;border-radius:13px;background:rgba(5,11,10,.62);border:1px solid rgba(255,255,255,.11);color:#90a49b;font-size:12px;line-height:1.4;}
+.challenges-v2{display:flex;flex-direction:column;gap:12px;}.challenge-hero{min-height:142px;border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;position:relative;background-image:linear-gradient(90deg,rgba(4,12,10,.96) 0%,rgba(4,12,10,.66) 38%,rgba(4,12,10,.18) 100%),url('./assets/challenge-hero-mountain.png');background-size:cover;background-position:center 49%;}.challenge-hero-copy{position:relative;z-index:1;padding:23px 26px;max-width:460px;}.challenge-hero-copy h2{font:800 24px var(--font-display);line-height:1.12;}.challenge-hero-copy p{margin-top:5px;font:11px var(--font-mono);color:#87d8b8;letter-spacing:.35px;}.challenge-hero-mantra{position:absolute;z-index:1;right:22%;top:38px;text-align:left;font:italic 22px/1.35 var(--font-display);color:rgba(244,255,249,.92);}.challenge-hero-mantra strong{display:block;font-style:normal;color:#63e697;font-weight:600;}.challenge-achievements-title{color:#65dc94;margin:2px 0 0;font:700 16px var(--font-display);}.challenge-achievements{grid-template-columns:repeat(9,minmax(0,1fr));gap:10px;margin:0 0 8px;}.challenge-achievements .achv-badge{min-height:128px;padding:10px 7px;border-color:rgba(91,217,143,.2);background:rgba(2,12,10,.55);opacity:.58;filter:none;}.challenge-achievements .achv-badge:hover{transform:translateY(-3px);border-color:rgba(91,217,143,.6);box-shadow:0 8px 22px rgba(0,0,0,.25);}.challenge-achievements .achv-badge.unlocked{opacity:1;border-color:rgba(91,217,143,.55);background:rgba(8,38,26,.55);box-shadow:inset 0 0 20px rgba(37,196,118,.08),0 0 16px rgba(37,196,118,.08);}.challenge-achievements .achv-icon{width:42px;height:45px;border-radius:0;clip-path:polygon(50% 0,94% 24%,94% 76%,50% 100%,6% 76%,6% 24%);background:rgba(8,42,27,.8);color:#73f0a1;border:1px solid #5fe394;box-shadow:none;margin-bottom:7px;font-size:11px;text-shadow:0 0 8px rgba(95,227,148,.7);}.challenge-achievements .achv-badge.unlocked .achv-icon{background:rgba(13,70,38,.85);box-shadow:0 0 15px rgba(67,237,134,.35);}.challenge-achievements .achv-name{font-size:10px;color:#ecf8f0;}.challenge-achievements .achv-desc{font-size:9.5px;line-height:1.3;color:#9aad9f;}
+.challenge-band{position:relative;overflow:hidden;min-height:158px;border:1px solid var(--glass-border);border-radius:16px;background-color:#07100e;background-size:cover;background-position:center;isolation:isolate;}.challenge-band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,13,10,.96) 0%,rgba(4,13,10,.83) 35%,rgba(4,13,10,.22) 72%,rgba(4,13,10,.91) 100%);z-index:-1;}.challenge-band.daily{background-image:url('./assets/challenge-daily-sunrise.png');background-position:center 54%;}.challenge-band.weekly{background-image:url('./assets/challenge-weekly-progress.png');background-position:center 50%;}.challenge-band.monthly{background-image:url('./assets/challenge-monthly-space.png');background-position:center 56%;}.challenge-band-content{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:18px;padding:16px 20px;min-height:158px;}.challenge-band-title{display:flex;align-items:center;gap:13px;}.challenge-band-title .challenge-band-icon{width:32px;height:32px;color:#ffd18a;filter:drop-shadow(0 0 7px rgba(255,183,83,.55));flex-shrink:0;}.challenge-band-title h3{font:700 16px var(--font-display);color:#68e195;}.challenge-band-title p{font-size:10.5px;color:#9aafa2;margin-top:3px;}.challenge-band-progress{display:flex;align-items:center;gap:8px;margin-left:7px;font:600 11px var(--font-mono);color:#e9f4ed;}.challenge-band-progress .bar-track{width:104px;height:7px;}.challenge-band-action{display:flex;align-items:flex-end;justify-content:center;flex-direction:column;gap:12px;text-align:left;}.challenge-band-action .btn-add{min-width:205px;justify-content:center;box-shadow:0 7px 22px rgba(40,155,216,.24);}.challenge-band-quote{font-size:10.5px;line-height:1.5;color:#8fd7ab;max-width:205px;}.challenge-band-quote span{display:block;color:#a5b7aa;margin-top:3px;}.challenge-band-challenges{margin:10px 0 0 45px;max-width:520px;}.challenge-band-challenges .challenge-grid{margin:0;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}.challenge-band .challenge-card{padding:12px;background:rgba(4,12,10,.72);backdrop-filter:blur(5px);}.challenge-band .challenge-name{font-size:12px;}.challenge-empty{max-width:315px;padding:14px 15px;border-radius:13px;background:rgba(5,11,10,.62);border:1px solid rgba(255,255,255,.11);color:#90a49b;font-size:12px;line-height:1.4;}
 .challenge-footer{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid rgba(98,220,150,.24);border-radius:12px;background:rgba(7,26,19,.6);color:#aebdb5;font-size:12px;text-align:center;}.challenge-footer svg{width:20px;height:20px;color:#ffd184;filter:drop-shadow(0 0 5px rgba(255,191,92,.4));}.challenge-footer b{color:#70e79e;}
 @media(max-width:1100px){.challenge-achievements{grid-template-columns:repeat(5,minmax(0,1fr));}.challenge-hero-mantra{right:7%;}.challenge-band-content{grid-template-columns:1fr 205px;}.challenge-band-challenges{margin-left:0;}}
 @media(max-width:700px){.challenge-hero-mantra{display:none;}.challenge-achievements{grid-template-columns:repeat(3,minmax(0,1fr));}.challenge-band-content{grid-template-columns:1fr;}.challenge-band-action{align-items:flex-start;margin-left:45px;}.challenge-band-challenges{margin-left:0;}.challenge-footer{gap:10px;}}
 
-/* Continuous mountain scene, full-bleed challenge imagery, and focus diagrams. */
-.challenges-v2{position:relative;isolation:isolate;gap:12px;}.challenges-v2::before{content:"";position:absolute;z-index:0;top:-26px;left:-28px;right:-28px;height:390px;background-image:linear-gradient(180deg,rgba(4,12,10,.18) 0%,rgba(4,12,10,.18) 48%,rgba(4,12,10,.96) 100%),url('./images/heromountain.png');background-size:cover;background-position:center 47%;pointer-events:none;}.challenges-v2>*{position:relative;z-index:1;}.challenge-hero{min-height:138px;border:0;border-radius:0;overflow:visible;background:none;}.challenge-hero-copy{padding:25px 26px;}.challenge-hero-mantra{right:22%;top:43px;text-shadow:0 2px 15px rgba(0,0,0,.85);}.challenge-brain{position:absolute;top:17px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#70dc98;text-align:center;font:8px var(--font-mono);letter-spacing:.25px;opacity:.82;text-shadow:0 0 10px rgba(85,220,141,.65);}.challenge-brain svg{width:52px;height:52px;stroke-width:1.35;filter:drop-shadow(0 0 9px rgba(72,219,132,.42));}.challenge-brain::before{content:"";position:absolute;width:74px;height:74px;border:1px solid rgba(86,224,143,.3);border-radius:50%;top:-10px;}.challenge-brain.left{left:44%;}.challenge-brain.right{right:2.5%;}.challenge-brain-labels{display:flex;justify-content:space-between;width:114px;color:#62c98c;}.challenge-brain-labels span:first-child{transform:translateX(-6px);}.challenge-brain-labels span:last-child{transform:translateX(6px);}.challenge-achievements-title{margin-top:-3px;}.challenge-achievements{margin-top:0;}.challenge-achievements .achv-badge{background:rgba(2,12,10,.46);}.challenge-band{border:0;border-radius:14px;box-shadow:none;}.challenge-band.daily{background-position:center 52%;}.challenge-band.weekly{background-position:center 49%;}.challenge-band.monthly{background-position:center 54%;}.challenge-band::before{background:linear-gradient(90deg,rgba(4,13,10,.93) 0%,rgba(4,13,10,.76) 34%,rgba(4,13,10,.12) 70%,rgba(4,13,10,.88) 100%);}.challenge-footer{border-color:rgba(98,220,150,.38);}
-@media(max-width:1180px){.challenge-brain.left{display:none;}.challenge-brain.right{right:1%;}.challenge-hero-mantra{right:18%;}}
-@media(max-width:780px){.challenges-v2::before{left:-16px;right:-16px;height:300px;}.challenge-brain{display:none;}.challenge-hero-mantra{display:none;}.challenge-hero-copy{padding-left:0;}.challenge-band{border-radius:12px;}}
+/* Challenge artwork: one continuous, border-free scene behind the title and achievements. */
+.challenges-v2{display:flex;flex-direction:column;gap:14px;}
+.challenges-v2::before{display:none;}
+.challenge-intro-scene{position:relative;isolation:isolate;overflow:hidden;margin:-12px -28px 0;padding:12px 28px 14px;background:#06100d url('./assets/challenge-hero-mountain.png') center 46% / cover no-repeat;}
+.challenge-intro-scene::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,12,9,.96) 0%,rgba(3,12,9,.79) 31%,rgba(3,12,9,.22) 66%,rgba(3,12,9,.80) 100%),linear-gradient(180deg,rgba(3,12,9,.06) 0%,rgba(3,12,9,.18) 42%,rgba(3,12,9,.96) 100%);}
+.challenge-intro-scene>*{position:relative;z-index:1;}
+.challenge-hero{min-height:142px;border:0;border-radius:0;overflow:visible;background:none;}
+.challenge-hero-copy{padding:24px 26px;max-width:450px;}
+.challenge-hero-mantra{right:22%;top:40px;text-shadow:0 2px 15px rgba(0,0,0,.9);}
+.challenge-achievements-title{margin:1px 0 12px;color:#65dc94;text-shadow:0 2px 10px rgba(0,0,0,.8);}
+.challenge-achievements{margin:0;}
+.challenge-achievements .achv-badge{background:rgba(2,12,10,.48);backdrop-filter:blur(2px);}
+.challenge-mind-map{position:absolute!important;z-index:2!important;right:22px;top:50%;width:250px;transform:translateY(-50%);pointer-events:none;opacity:.9;}
+.challenge-mind-map svg{display:block;width:100%;height:auto;overflow:visible;}
+.challenge-mind-map .mind-orbit{animation:mindOrbitPulse 3.2s ease-in-out infinite;}
+.challenge-mind-map .mind-dots circle{animation:mindNodePulse 2s ease-in-out infinite;}
+.challenge-mind-map .mind-dots circle:nth-child(2){animation-delay:.5s;}.challenge-mind-map .mind-dots circle:nth-child(3){animation-delay:1s;}.challenge-mind-map .mind-dots circle:nth-child(4){animation-delay:1.5s;}
+@keyframes mindOrbitPulse{50%{opacity:1;}}@keyframes mindNodePulse{50%{r:4.7;opacity:.65;}}
+.challenge-brain{display:none;}
+.challenge-band{border:0;border-radius:14px;box-shadow:none;background-size:cover;}
+.challenge-band.daily{background-position:center 48%;}.challenge-band.weekly{background-position:center 50%;}.challenge-band.monthly{background-position:center 50%;}
+.challenge-band::before{background:linear-gradient(90deg,rgba(4,13,10,.93) 0%,rgba(4,13,10,.76) 34%,rgba(4,13,10,.12) 70%,rgba(4,13,10,.88) 100%);}
+.challenge-footer{border-color:rgba(98,220,150,.38);}
+@media(max-width:1180px){.challenge-mind-map{right:10px;width:190px;opacity:.55;}.challenge-hero-mantra{right:18%;}}
+@media(max-width:820px){.challenge-intro-scene{margin:-12px -28px 0;padding-left:28px;padding-right:28px;background-position:center top;}.challenge-mind-map{display:none;}.challenge-hero-mantra{display:none;}.challenge-hero-copy{padding-left:0;}.challenge-band{border-radius:12px;}}
 
 /* Calendar */
 .cal-nav{display:flex;align-items:center;gap:10px;}
@@ -463,6 +484,21 @@ button{cursor:pointer;}
 .cal-dot{width:5px;height:5px;border-radius:50%;background:var(--royal);}
 .countdown-strip{display:flex;gap:14px;margin-bottom:16px;flex-wrap:wrap;}
 .countdown-strip .stat-box{flex:1;min-width:120px;}
+
+/* ---------- STUDY HOURS + CALENDAR: VISUAL UPGRADE ---------- */
+.study-v3,.calendar-v3{display:flex;flex-direction:column;gap:14px;}
+.study-hero{position:relative;isolation:isolate;min-height:116px;overflow:hidden;padding:22px 24px;border-radius:16px;background:#07110f url('./assets/study-hours-hero.png') center 47% / cover no-repeat;}
+.study-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,13,12,.98) 0%,rgba(3,13,12,.78) 38%,rgba(3,13,12,.16) 70%,rgba(3,13,12,.45) 100%);}
+.study-hero h2{font:800 25px var(--font-display);}.study-hero p{margin-top:5px;color:#6fe5a1;font:11px var(--font-mono);letter-spacing:.3px;}.study-quote{position:absolute;right:26%;top:23px;max-width:285px;font:italic 15px/1.45 var(--font-display);color:#f1f8f4;text-align:left;}.study-quote b{color:#4ae895;font-style:normal;}.study-hero .btn-add{position:absolute;right:22px;top:22px;min-width:138px;justify-content:center;}
+.study-goals-row{display:grid;grid-template-columns:1fr 1fr 1.55fr;gap:14px;}.study-goal-card{padding:16px;display:flex;align-items:center;gap:16px;min-height:146px;}.study-goal-card .hero-stats h2{font-size:16px;}.study-goal-card .hero-stats p{font-size:11px;line-height:1.45;margin-top:6px;}.study-goal-card .goal-state{display:inline-flex;align-items:center;gap:5px;margin-top:9px;font-size:10.5px;color:#62e494;}.study-metric-board{display:grid;grid-template-columns:repeat(4,1fr);align-items:stretch;padding:0;overflow:hidden;}.study-metric{padding:20px 15px;border-left:1px solid var(--glass-border);display:flex;align-items:flex-start;gap:10px;}.study-metric:first-child{border-left:0;}.study-metric i{width:26px;height:26px;color:var(--emerald);}.study-metric:nth-child(1) i{color:#ff5454}.study-metric:nth-child(2) i{color:#37c7ff}.study-metric:nth-child(3) i{color:var(--gold)}.study-metric:nth-child(4) i{color:#54e0bb}.study-metric b{display:block;font:700 17px var(--font-display);}.study-metric span{display:block;margin-top:3px;font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.55px;}
+.study-timer-row{display:grid;grid-template-columns:1.8fr 1fr;gap:14px;}.study-timer-v3{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}.study-timer-main{display:flex;align-items:center;gap:16px;}.study-timer-main>i{width:48px;height:48px;color:var(--emerald);filter:drop-shadow(0 0 8px rgba(var(--emerald-rgb),.45));}.study-timer-v3 .timer-display{font-size:34px;color:var(--emerald);text-shadow:0 0 15px rgba(var(--emerald-rgb),.36);}.study-focus-card{padding:18px 20px;display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;background:linear-gradient(135deg,rgba(6,38,29,.78),rgba(3,16,13,.85));}.study-focus-card>i{width:35px;height:35px;color:#29e6a1;filter:drop-shadow(0 0 8px rgba(41,230,161,.4));}.study-focus-card b{font:700 14px var(--font-display);}.study-focus-card p{font-size:10.5px;color:var(--text-dim);line-height:1.4;margin-top:3px;}.focus-score{text-align:right;min-width:88px;}.focus-score span{display:block;font-size:10px;color:var(--text-dim);}.focus-score b{display:block;color:#48e89c;font-size:22px;margin:3px 0;}.focus-meter{height:7px;border-radius:8px;background:rgba(255,255,255,.08);overflow:hidden;}.focus-meter i{display:block;height:100%;background:linear-gradient(90deg,var(--emerald),#67ecaa);border-radius:inherit;}
+.study-summary-row{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;}.study-facts{display:grid;grid-template-columns:repeat(4,1fr);padding:0;overflow:hidden;}.study-fact{padding:19px 14px;display:flex;gap:10px;align-items:center;border-left:1px solid var(--glass-border);}.study-fact:first-child{border-left:0;}.study-fact i{width:27px;height:27px;color:var(--gold);}.study-fact b{display:block;font:700 16px var(--font-display);}.study-fact span{font-size:9px;color:var(--text-faint);line-height:1.35;display:block;margin-top:2px;}.study-mini-chart{padding:15px 18px;}.study-mini-chart .section-title{font-size:13px;}.study-two-up{display:grid;grid-template-columns:1fr 1fr;gap:14px;}.study-chart{padding:16px 18px;min-height:228px;}.study-chart .section-title{font-size:13px;}.study-chart .chart-note{font-size:10px;color:var(--text-faint);margin:4px 0 8px;}.study-bottom-strip{padding:14px 18px;display:grid;grid-template-columns:1.8fr repeat(3,1fr);gap:14px;align-items:center;background:linear-gradient(90deg,rgba(6,24,31,.92),rgba(5,19,16,.92));}.study-bottom-message{display:flex;gap:12px;align-items:center;font-size:12px;color:var(--text-dim);}.study-bottom-message i{width:30px;height:30px;color:var(--royal);}.study-bottom-item{border-left:1px solid var(--glass-border);padding-left:14px;font-size:10px;color:var(--text-faint);}.study-bottom-item b{display:block;margin-top:3px;color:var(--text);font:700 14px var(--font-display);}.study-bottom-item b em{font-style:normal;color:var(--emerald);}
+.calendar-hero{position:relative;isolation:isolate;overflow:hidden;min-height:116px;border-radius:16px;padding:23px 24px;background:#06110f url('./assets/calendar-hero-mountain.png') center 51% / cover no-repeat;}.calendar-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,13,12,.94) 0%,rgba(3,13,12,.68) 42%,rgba(3,13,12,.14) 75%,rgba(3,13,12,.3) 100%);}.calendar-hero h2{font:800 23px var(--font-display);}.calendar-hero p{margin-top:26px;font:500 18px var(--font-display);}.calendar-hero p b{color:var(--emerald);font-weight:600;}.calendar-hero .calendar-hero-icon{position:absolute;right:45px;top:17px;width:76px;height:76px;color:#45f0b0;filter:drop-shadow(0 0 11px rgba(64,232,169,.55));}.calendar-kpis{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:14px;align-items:stretch;}.calendar-kpi{padding:17px 20px;display:flex;gap:13px;align-items:center;}.calendar-kpi i{width:36px;height:36px;color:var(--emerald);filter:drop-shadow(0 0 7px rgba(var(--emerald-rgb),.36));}.calendar-kpi:nth-child(2) i{color:#5bd7ff}.calendar-kpi:nth-child(3) i{color:#48eaa2}.calendar-kpi b{display:block;font:700 22px var(--font-display);}.calendar-kpi span{display:block;margin-top:3px;font-size:10px;letter-spacing:.55px;color:var(--text-faint);}.calendar-nav-v3{display:flex;align-items:center;gap:12px;}.calendar-nav-v3 button{width:46px;height:46px;border-radius:10px;border:1px solid var(--glass-border);background:rgba(255,255,255,.035);font-size:24px;}.calendar-nav-v3 button:disabled{opacity:.28;cursor:not-allowed;}.calendar-nav-v3 .cal-month-label{min-width:170px;padding:13px 16px;border:1px solid var(--glass-border);border-radius:10px;background:rgba(255,255,255,.035);font-size:14px;}
+.calendar-shell{padding:18px 20px;}.calendar-shell .cal-grid{gap:0;border:1px solid var(--glass-border);border-radius:12px;overflow:hidden;}.calendar-shell .cal-dow{padding:12px 4px 9px;background:rgba(255,255,255,.025);}.calendar-shell .cal-cell{aspect-ratio:auto;min-height:105px;border:0;border-top:1px solid var(--glass-border);border-left:1px solid var(--glass-border);border-radius:0;padding:10px;justify-content:flex-start;gap:6px;cursor:pointer;overflow:hidden;position:relative;}.calendar-shell .cal-cell:nth-child(8n){border-left:0;}.calendar-shell .cal-cell:hover{transform:none;background:rgba(var(--emerald-rgb),.07);border-color:var(--glass-border);z-index:1;}.calendar-shell .cal-cell.empty{background:rgba(0,0,0,.06);cursor:default;}.calendar-shell .cal-cell.today{border:1px solid var(--emerald);box-shadow:inset 0 0 18px rgba(var(--emerald-rgb),.13);z-index:2;}.calendar-shell .cal-daynum{font-size:13px;color:var(--text);}.calendar-shell .holiday .cal-daynum{color:var(--gold);}.cal-today-label{font-size:9px;color:var(--emerald);display:flex;gap:4px;align-items:center;}.cal-today-label::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--emerald);}.cal-personal-chip,.cal-deadline-chip{position:relative;z-index:1;max-width:calc(100% - 3px);padding:5px 7px;border-radius:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px;background:rgba(35,125,229,.14);color:#8fc8ff;}.cal-personal-chip.task{background:rgba(26,210,155,.13);color:#7df1be;}.cal-deadline-chip{background:rgba(55,104,246,.13);color:#9dc1ff;}.cal-photo{position:absolute;right:8px;bottom:8px;width:37px;height:37px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:3;cursor:zoom-in;}.cal-photo img{width:100%;height:100%;object-fit:cover;display:block;}.cal-cell.has-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 55%,rgba(25,219,156,.11));pointer-events:none;}.calendar-actions{display:flex;justify-content:space-between;gap:12px;margin-top:18px;}.calendar-add-btn{background:transparent;color:var(--emerald);border:1px solid rgba(var(--emerald-rgb),.65);box-shadow:none;}.calendar-helper{font-size:10.5px;color:var(--text-faint);align-self:center;}
+.cal-personal-chip.revision{background:rgba(166,93,255,.14);color:#d4a4ff;}.cal-personal-chip.test{background:rgba(245,172,46,.15);color:#ffd37a;}
+.cal-image-card{position:absolute;z-index:4;min-width:52px;max-width:92%;border:1px solid rgba(255,255,255,.46);border-radius:9px;padding:3px;background:rgba(4,16,13,.92);box-shadow:0 5px 15px rgba(0,0,0,.38);touch-action:none;}.cal-image-card img{display:block;width:100%;height:auto;max-height:110px;object-fit:cover;border-radius:6px;cursor:zoom-in;}.cal-image-move{position:absolute;top:4px;left:4px;width:21px;height:21px;border:1px solid rgba(255,255,255,.35);border-radius:6px;background:rgba(0,0,0,.62);color:#fff;display:grid;place-items:center;font-size:13px;line-height:1;cursor:grab;touch-action:none;z-index:2;}.cal-image-resize{position:absolute;right:-7px;bottom:-7px;width:16px;height:16px;border-radius:50%;border:2px solid #052019;background:var(--emerald);box-shadow:0 0 8px rgba(var(--emerald-rgb),.7);cursor:ew-resize;touch-action:none;z-index:2;}
+@media(max-width:1100px){.study-goals-row{grid-template-columns:1fr 1fr;}.study-metric-board{grid-column:span 2;}.study-timer-row,.study-summary-row{grid-template-columns:1fr;}.calendar-kpis{grid-template-columns:repeat(3,1fr);}.calendar-nav-v3{grid-column:span 3;justify-content:center;}.study-quote{right:20%;}.calendar-hero-icon{opacity:.55;}}
+@media(max-width:720px){.study-hero{min-height:135px;}.study-quote,.calendar-hero-icon{display:none;}.study-hero .btn-add{right:16px;bottom:16px;top:auto;}.study-goals-row,.study-two-up{grid-template-columns:1fr;}.study-metric-board,.study-facts{grid-template-columns:repeat(2,1fr);}.study-timer-v3{align-items:flex-start;flex-direction:column;}.study-timer-main>i{width:36px;height:36px;}.study-timer-v3 .timer-display{font-size:28px;}.study-focus-card{grid-template-columns:38px 1fr;}.focus-score{grid-column:2;text-align:left;}.study-bottom-strip{grid-template-columns:1fr 1fr;}.study-bottom-message{grid-column:span 2;}.calendar-kpis{grid-template-columns:1fr;}.calendar-nav-v3{grid-column:auto;}.calendar-shell{padding:12px;overflow-x:auto;}.calendar-shell .cal-grid{min-width:630px;}.calendar-shell .cal-cell{min-height:94px;}.calendar-actions{align-items:flex-start;flex-direction:column;}.calendar-hero p{font-size:15px;margin-top:25px;}}
 
 /* Form modal */
 .modal.form-modal{width:400px;text-align:left;max-height:80vh;overflow-y:auto;}
@@ -718,6 +754,34 @@ button{cursor:pointer;}
   .quick-grid{grid-template-columns:repeat(2,1fr);}
   .detail-inner{grid-template-columns:repeat(2,1fr);}
 }
+.study-hours-container { display: flex; flex-direction: column; gap: 20px; padding: 24px; min-height: 100vh; }
+.tracker-hero-card { position: relative; border-radius: 16px; border: 1px solid var(--glass-border); min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; overflow: hidden; background-color: var(--bg-surface-dark); }
+.tracker-hero-bg { position: absolute; top: 0; right: 0; width: 60%; height: 100%; background-image: url('image_3f65e4.jpg'); background-size: cover; background-position: center right; z-index: 1; pointer-events: none; }
+.tracker-hero-bg::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, var(--bg-surface-dark) 0%, rgba(11, 15, 25, 0.8) 25%, rgba(11, 15, 25, 0) 100%); }
+.tracker-hero-content { position: relative; z-index: 2; max-width: 55%; display: flex; flex-direction: column; gap: 8px; }
+.tracker-hero-content h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; margin: 0; }
+.tracker-hero-quote { margin-top: 20px; font-style: italic; color: var(--text-muted); font-size: 1.1rem; line-height: 1.5; border-left: 3px solid var(--neon-cyan); padding-left: 12px; }
+.tracker-hero-quote span.highlight { color: var(--neon-emerald); text-shadow: 0 0 8px rgba(16, 185, 129, 0.4); font-weight: 600; }
+.dashboard-metrics-row { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 16px; }
+.metric-progress-card { background: var(--glass-card); border: 1px solid var(--glass-border); border-radius: 14px; padding: 20px; display: flex; align-items: center; gap: 24px; backdrop-filter: blur(12px); }
+.progress-ring-wrapper { position: relative; width: 90px; height: 90px; flex-shrink: 0; }
+.progress-ring-svg { transform: rotate(-90deg); }
+.progress-ring-bg { fill: none; stroke: var(--text-faint); stroke-width: 8; }
+.progress-ring-circle { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 0.5s ease-in-out; }
+.ring-cyan { stroke: url(#gradient-cyan); }
+.ring-emerald { stroke: url(#gradient-emerald); }
+.progress-ring-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+.progress-ring-text .value { font-size: 1.1rem; font-weight: 700; display: block; }
+.interactive-engine-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px; }
+.engine-card { background: var(--glass-card); border: 1px solid var(--glass-border); border-radius: 14px; padding: 20px; backdrop-filter: blur(12px); }
+.timer-display-digits { font-family: 'JetBrains Mono', monospace; font-size: 2.2rem; font-weight: 700; color: var(--neon-cyan); text-shadow: 0 0 10px rgba(13, 242, 201, 0.3); }
+.analytics-quadrant-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+.matrix-grid-mesh { display: grid; grid-template-columns: repeat(31, 1fr); gap: 3px; }
+.matrix-cell { aspect-ratio: 1; background: rgba(255, 255, 255, 0.03); border-radius: 2px; }
+.matrix-cell.tier-1 { background: rgba(16, 185, 129, 0.2); }
+.matrix-cell.tier-2 { background: rgba(16, 185, 129, 0.4); }
+.matrix-cell.tier-3 { background: rgba(16, 185, 129, 0.7); }
+.matrix-cell.tier-4 { background: var(--neon-emerald); }
 </style>
 </head>
 <body>
@@ -791,6 +855,65 @@ button{cursor:pointer;}
     </div>
 
     <div class="content" id="content"></div>
+    <div class="study-hours-container" id="study-hours-view" style="display: none;">
+      <svg width="0" height="0" style="position:absolute;">
+        <defs>
+          <linearGradient id="gradient-cyan" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0df2c9" /><stop offset="100%" stop-color="#00c6ff" /></linearGradient>
+          <linearGradient id="gradient-emerald" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981" /><stop offset="100%" stop-color="#059669" /></linearGradient>
+        </defs>
+      </svg>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <h1 style="font-size:1.6rem; font-weight:800; margin:0;">Study Hours</h1>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin:2px 0 0 0;">Self study tracker</p>
+        </div>
+      </div>
+      <div class="tracker-hero-card">
+        <div class="tracker-hero-bg"></div>
+        <div class="tracker-hero-content">
+          <h2>Self Study Tracker</h2>
+          <div style="font-size: 0.9rem; color: var(--neon-cyan); font-weight: 600;">Daily goal 6h &bull; Weekly goal 42h</div>
+          <div class="tracker-hero-quote">“The more you learn today, <br>the stronger your <span class="highlight">future</span> becomes.”</div>
+        </div>
+        <div style="position:absolute; top:30px; right:30px; z-index:3;">
+          <button class="btn-log-hours" id="trigger-manual-log" style="background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">Log Hours</button>
+        </div>
+      </div>
+      <div class="dashboard-metrics-row">
+        <div class="metric-progress-card">
+          <div class="progress-ring-wrapper">
+            <svg class="progress-ring-svg" width="90" height="90"><circle class="progress-ring-bg" cx="45" cy="45" r="38" /><circle class="progress-ring-circle ring-cyan" id="ring-daily" cx="45" cy="45" r="38" stroke-dasharray="238.76" stroke-dashoffset="0" /></svg>
+            <div class="progress-ring-text"><span class="value" id="lbl-daily-hrs">0.0h</span><span class="label">/6h</span></div>
+          </div>
+          <div class="metric-card-details"><h4>Daily Performance</h4><p><span id="lbl-daily-sub">0.0</span> of 6 hours logged today.</p></div>
+        </div>
+        <div class="metric-progress-card">
+          <div class="progress-ring-wrapper">
+            <svg class="progress-ring-svg" width="90" height="90"><circle class="progress-ring-bg" cx="45" cy="45" r="38" /><circle class="progress-ring-circle ring-emerald" id="ring-weekly" cx="45" cy="45" r="38" stroke-dasharray="238.76" stroke-dashoffset="0" /></svg>
+            <div class="progress-ring-text"><span class="value" id="lbl-weekly-hrs">0.0h</span><span class="label">/42h</span></div>
+          </div>
+          <div class="metric-card-details"><h4>Weekly Performance</h4><p><span id="lbl-weekly-sub">0.0</span> of 42 hours logged this week.</p></div>
+        </div>
+      </div>
+      <div class="interactive-engine-row">
+        <div class="engine-card">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div><div class="timer-display-digits" id="timer-output">00:00:00</div><div style="font-size:0.75rem; color:var(--text-muted);">Session Engine</div></div>
+            <div>
+              <button class="btn-ctrl pause" id="btn-timer-toggle" style="background:#ff4a4a; color:white; padding:8px 16px; border:none; border-radius:6px; cursor:pointer;">Start</button>
+              <button class="btn-ctrl reset" id="btn-timer-reset" style="background:rgba(255,255,255,0.08); color:white; padding:8px 16px; border:none; border-radius:6px; cursor:pointer;">Reset</button>
+              <button class="btn-ctrl log" id="btn-timer-commit" style="background:var(--neon-gold); color:black; padding:8px 16px; border:none; border-radius:6px; cursor:pointer;">Log</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="analytics-quadrant-grid">
+        <div class="chart-card" style="background:var(--glass-card); border:1px solid var(--glass-border); padding:20px; border-radius:14px;">
+          <h4>Monthly Heatmap</h4>
+          <div class="matrix-grid-mesh" id="heatmap-mesh-target" style="margin-top:12px;"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1186,6 +1309,7 @@ function defaultChallenge(period, overrides={}){
 }
 function buildDefaultChallenges(){ return {daily:[], weekly:[], monthly:[]}; }
 function buildDefaultStudy(){ return {log:{}, timer:{running:false,startTs:null,accumulatedSeconds:0}}; }
+function buildDefaultCalendar(){ return {days:{}}; }
 function defaultNote(){ return {content:'', images:[], tags:[], pinned:false, history:[], updatedAt:''}; }
 function buildDefaultNotes(){ return {}; }
 function buildDefaultDailyReview(){ return {}; }
@@ -1236,7 +1360,7 @@ function buildDefaultSubject(subject){
 let STATE = {
   maths:null, physics:null, chemistry:null,
   profile:{xp:0, coins:0, level:1, streak:0, lastActiveDate:'', unlockedAchievements:[]},
-  challenges:null, study:null, activity:[], recovery:null,
+  challenges:null, study:null, calendar:null, activity:[], recovery:null,
   notes:null, dailyReview:null, routine:null,
   goals:null, rules:null, settings:null
 };
@@ -1292,6 +1416,22 @@ async function loadState(){
   }catch(e){
     STATE.study = buildDefaultStudy();
   }
+  if(!STATE.study.log || typeof STATE.study.log!=='object') STATE.study.log={};
+  if(!STATE.study.timer || typeof STATE.study.timer!=='object') STATE.study.timer={running:false,startTs:null,accumulatedSeconds:0};
+  try{
+    const res = await window.storage.get('calendar');
+    STATE.calendar = res ? Object.assign(buildDefaultCalendar(), JSON.parse(res.value)) : buildDefaultCalendar();
+  }catch(e){ STATE.calendar=buildDefaultCalendar(); }
+  if(!STATE.calendar.days || typeof STATE.calendar.days!=='object') STATE.calendar.days={};
+  Object.values(STATE.calendar.days).forEach(day=>{
+    if(!day || typeof day!=='object') return;
+    if(!Array.isArray(day.events)) day.events=[];
+    if(day.image){
+      if(typeof day.image.width!=='number') day.image.width=68;
+      if(typeof day.image.x!=='number') day.image.x=28;
+      if(typeof day.image.y!=='number') day.image.y=30;
+    }
+  });
   try{
     const res = await window.storage.get('activity');
     STATE.activity = res ? JSON.parse(res.value) : [];
@@ -1372,6 +1512,11 @@ async function saveChallenges(){
 async function saveStudy(){
   debouncedSave('study', async ()=>{
     try{ await window.storage.set('study', JSON.stringify(STATE.study)); }catch(e){ console.error(e); }
+  });
+}
+async function saveCalendar(){
+  debouncedSave('calendar', async ()=>{
+    try{ await window.storage.set('calendar', JSON.stringify(STATE.calendar)); }catch(e){ console.error(e); }
   });
 }
 async function saveActivity(){
@@ -1608,7 +1753,7 @@ function snapshotIfChanged(subject, chapterId, force){
   }
   return false;
 }
-function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
 /* ===================== BUILT-IN MARKDOWN PARSER (no external dependency) ===================== */
 function mdInline(raw){
@@ -2198,19 +2343,12 @@ function renderChallenges(){
     {key:'weekly',label:'Weekly',icon:'calendar-days',desc:'Consistency every week. Progress every week.',quote:'“Small progress is still progress.”',author:'— Unknown'},
     {key:'monthly',label:'Monthly',icon:'trophy',desc:'Big goals. Deep impact. Long term change.',quote:'“Don’t watch the clock; do what it does. Keep going.”',author:'— Sam Levenson'}
   ];
-  let html = `<div class="challenges-v2">
+  let html = `<div class="challenges-v2"><section class="challenge-intro-scene">
     <div class="challenge-hero">
       <div class="challenge-hero-copy"><h2>Challenge System</h2><p>Daily &middot; Weekly &middot; Monthly targets</p></div>
       <div class="challenge-hero-mantra">DISCIPLINE TODAY,<strong>FREEDOM TOMORROW.</strong></div>
-      <div class="challenge-brain left" aria-hidden="true">
-        <div class="challenge-brain-labels"><span>FOCUS</span><span>ACTION</span></div>
-        ${dashIcon('brain')}
-        <div class="challenge-brain-labels"><span>GROWTH</span><span>RESILIENCE</span></div>
-      </div>
-      <div class="challenge-brain right" aria-hidden="true">
-        <div class="challenge-brain-labels"><span>FOCUS</span><span>ACTION</span></div>
-        ${dashIcon('brain')}
-        <div class="challenge-brain-labels"><span>GROWTH</span><span>RESILIENCE</span></div>
+      <div class="challenge-mind-map" aria-hidden="true">
+        <svg viewBox="0 0 340 190" focusable="false"><defs><filter id="mindGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><linearGradient id="mindStroke" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#57f7a9"/><stop offset="1" stop-color="#149f67"/></linearGradient></defs><g class="mind-orbit" fill="none" stroke="url(#mindStroke)" stroke-width="1.25" opacity=".74"><path d="M74 94C74 42 118 18 170 18c54 0 98 25 98 76"/><path d="M74 96c0 52 43 76 96 76 54 0 98-27 98-78"/><path stroke-dasharray="3 5" d="M75 94h-21M265 94h21M170 18v-11M170 172v11"/></g><g class="mind-dots" fill="#4cf39c" filter="url(#mindGlow)"><circle cx="74" cy="94" r="3"/><circle cx="266" cy="94" r="3"/><circle cx="170" cy="18" r="3"/><circle cx="170" cy="172" r="3"/></g><g class="brain" fill="none" stroke="url(#mindStroke)" stroke-linecap="round" stroke-linejoin="round" filter="url(#mindGlow)"><path stroke-width="2" d="M132 137c-16-1-28-12-28-28 0-9 4-16 10-21-3-4-5-9-5-14 0-13 10-24 23-24 4 0 8 1 11 3 5-10 15-16 27-16 13 0 23 6 28 17 3-2 7-3 11-3 14 0 24 11 24 24 0 5-2 10-5 14 7 5 11 12 11 21 0 16-12 28-28 28-4 0-8-1-11-3-5 10-15 16-28 16-12 0-23-6-28-16-3 2-7 3-10 3Z"/><path stroke-width="1.45" d="M170 53v79M143 54c8 3 13 10 13 18 0 6-3 11-8 14 6 3 10 8 10 15 0 7-4 13-10 16M198 54c-8 3-13 10-13 18 0 6 3 11 8 14-6 3-10 8-10 15 0 7 4 13 10 16M111 89c10-2 19 3 22 11M229 89c-10-2 19 3 22 11M119 115c8-3 16 0 21 7M221 115c-8-3-16 0-21 7"/><path stroke-width="1.2" opacity=".85" d="M130 71c3 4 7 6 12 6M210 71c-3 4-7 6-12 6M130 103c5 3 10 3 15 0M210 103c-5 3-10 3-15 0"/></g><g class="mind-labels" fill="#69dfa2" font-family="Inter, sans-serif" font-size="10" font-weight="700" letter-spacing=".8"><text x="145" y="11">FOCUS</text><text x="6" y="87">ACTION</text><text x="279" y="87">CONSISTENCY</text><text x="145" y="188">GROWTH</text><text x="143" y="103" font-size="9" opacity=".72">RESILIENCE</text></g></svg>
       </div>
     </div>
     <div class="challenge-achievements-title">Achievements</div>
@@ -2221,7 +2359,7 @@ function renderChallenges(){
           <div class="achv-icon">${a.abbr}</div><div class="achv-name">${a.name}</div><div class="achv-desc">${a.desc}</div>
         </div>`;
       }).join('')}
-    </div>`;
+    </div></section>`;
   sections.forEach(meta=>{
     const list=STATE.challenges[meta.key], st=challengeStats(meta.key);
     html += `<section class="challenge-band ${meta.key}">
@@ -2498,6 +2636,30 @@ function renderStudyHours(){
   tickTimerDisplay();
 }
 
+/* Refined Study Hours dashboard. This declaration replaces the legacy renderer above. */
+function renderStudyHours(){
+  const today=fmtDate(), todayHrs=hoursForDate(today), weekTotal=currentWeekTotal(), streak=computeStreak(), bw=bestWorstDay();
+  const totalHours=totalStudyHours(), focusSeconds=dashboardFocusSeconds();
+  const dailyPct=Math.min(100,Math.round(todayHrs/6*100)), weeklyPct=Math.min(100,Math.round(weekTotal/42*100));
+  const bestDate=bw.best?formatShortDate(bw.best.date):'—', worstDate=bw.worst?formatShortDate(bw.worst.date):'—';
+  const focusLevel=Math.min(100,Math.round(62+Math.min(30,weekTotal*1.1)+(STATE.study.timer.running?7:0)));
+  const milestone=weekTotal>=42?'Weekly goal achieved':`${Math.max(0,Math.ceil(42-weekTotal))}h to weekly goal`;
+  document.getElementById('content').innerHTML=`<div class="study-v3">
+    <section class="study-hero"><h2>Self Study Tracker</h2><p>Daily goal 6h &nbsp;•&nbsp; Weekly goal 42h</p><div class="study-quote">“The more you learn today, the stronger your <b>future</b> becomes.”</div><button class="btn-add" id="openLogForm">${dashIcon('plus')} Log Hours</button></section>
+    <section class="study-goals-row">
+      <div class="glass-card study-goal-card">${svgRing(dailyPct,{size:120,big:todayHrs.toFixed(1)+'h',label:'/6h Today'})}<div class="hero-stats"><h2>${todayHrs>=6?'Daily goal cleared.':'Today’s focus.'}</h2><p>${todayHrs.toFixed(1)} of 6 hours logged today.</p><span class="goal-state">${dashIcon(todayHrs>=6?'circle-check':'circle')} ${todayHrs>=6?'Goal achieved!':Math.max(0,6-todayHrs).toFixed(1)+'h remaining'}</span></div></div>
+      <div class="glass-card study-goal-card">${svgRing(weeklyPct,{size:120,big:weekTotal.toFixed(1)+'h',label:'/42h This week',color1:'#3b6cf6',color2:'#10b981'})}<div class="hero-stats"><h2>${weekTotal>=42?'Weekly goal cleared.':'Weekly progress.'}</h2><p>${weekTotal.toFixed(1)} of 42 hours logged this week.</p><span class="goal-state">${dashIcon(weekTotal>=42?'circle-check':'trending-up')} ${milestone}</span></div></div>
+      <div class="glass-card study-metric-board"><div class="study-metric">${dashIcon('flame')}<div><b>${streak}</b><span>Day streak</span></div></div><div class="study-metric">${dashIcon('clock-3')}<div><b>${totalHours.toFixed(1)}h</b><span>Total logged</span></div></div><div class="study-metric">${dashIcon('trophy')}<div><b>${bw.best?bw.best.hours.toFixed(1)+'h':'—'}</b><span>Best day · ${bestDate}</span></div></div><div class="study-metric">${dashIcon('feather')}<div><b>${bw.worst?bw.worst.hours.toFixed(1)+'h':'—'}</b><span>Lightest · ${worstDate}</span></div></div></div>
+    </section>
+    <section class="study-timer-row"><div class="glass-card study-timer-v3"><div class="study-timer-main">${dashIcon('timer-reset')}<div><div class="timer-display" id="timerDisplay">00:00:00</div><div style="font-size:11px;color:var(--text-faint);margin-top:4px;">Manual study timer</div></div></div><div class="timer-controls"><button class="timer-btn ${STATE.study.timer.running?'stop':'start'}" id="timerToggle">${STATE.study.timer.running?'Pause':'Start'}</button><button class="timer-btn" id="timerReset">Reset</button><button class="timer-btn" id="timerLog" style="background:var(--gold);color:#04140f;border-color:var(--gold);">Log Session</button></div></div><div class="glass-card study-focus-card">${dashIcon('brain-circuit')}<div><b>${STATE.study.timer.running?'Focus Mode On':'Focus Mode Ready'}</b><p>Block distractions.<br>Build deep focus.</p></div><div class="focus-score"><span>Focus level</span><b>${focusLevel}%</b><div class="focus-meter"><i style="width:${focusLevel}%"></i></div></div></div></section>
+    <section class="study-summary-row"><div class="glass-card study-facts"><div class="study-fact">${dashIcon('zap')}<div><b>${streak}</b><span>Day streak</span></div></div><div class="study-fact">${dashIcon('clock-3')}<div><b>${totalHours.toFixed(1)}h</b><span>Total logged</span></div></div><div class="study-fact">${dashIcon('trophy')}<div><b>${bw.best?bw.best.hours.toFixed(1)+'h':'—'}</b><span>Best · ${bestDate}</span></div></div><div class="study-fact">${dashIcon('feather')}<div><b>${bw.worst?bw.worst.hours.toFixed(1)+'h':'—'}</b><span>Lightest · ${worstDate}</span></div></div></div><div class="glass-card study-mini-chart"><div class="section-title">Last 14 Days</div><div class="chart-note">Hours logged per day · goal 6h/day</div>${svgBarChart(last14DaysSeries(),{height:104,goalLine:6,unit:'h'})}</div></section>
+    <section class="study-two-up"><div class="glass-card study-chart"><div class="section-title">Consistency — 7-day Rolling Average</div><div class="chart-note">The real trend, not a single good or bad day.</div>${svgLineChart(rollingAverageSeries(30),{height:155,color:'#16dca0'})}</div><div class="glass-card study-chart"><div class="section-title">Monthly Heatmap</div><div class="chart-note">Brighter cells mean more hours of deep work.</div><div class="heatmap-wrap">${renderHeatmap()}</div></div></section>
+    <section class="study-two-up"><div class="glass-card study-chart"><div class="section-title">Year Overview</div><div class="chart-note">Hours logged from your study start to exam period.</div>${svgBarChart(yearMonthSeries(),{height:155,color1:'#065f46',color2:'#10b981',unit:'h'})}</div><div class="glass-card study-chart"><div class="section-title">Today’s Plan vs Actual</div><div class="chart-note">Goal 6h · Actual ${todayHrs.toFixed(1)}h</div>${svgRing(dailyPct,{size:126,big:dailyPct+'%',label:todayHrs>=6?'Above target':'In progress'})}</div></section>
+    <section class="glass-card study-bottom-strip"><div class="study-bottom-message">${dashIcon('rocket')}<div><b>Small hours every day create big results.</b><br>You don’t need more time, you need more focus.</div></div><div class="study-bottom-item">This week<b><em>${weekTotal.toFixed(1)}h</em> / 42h</b></div><div class="study-bottom-item">This month<b>${totalHours.toFixed(1)}h</b></div><div class="study-bottom-item">Focus timer<b>${formatFocusTime(focusSeconds)}</b></div></section>
+  </div>`;
+  attachStudyHandlers(); tickTimerDisplay(); hydrateIcons();
+}
+
 function renderHeatmap(){
   const monthNames=['Jul','Aug','Sep','Oct','Nov','Dec'];
   let out='';
@@ -2652,6 +2814,100 @@ function renderCalendar(){
   document.getElementById('content').innerHTML = html;
   document.getElementById('calPrev').addEventListener('click', ()=>{ if(m>6){ calendarMonth=new Date(y,m-1,1); renderCalendar(); }});
   document.getElementById('calNext').addEventListener('click', ()=>{ if(m<11){ calendarMonth=new Date(y,m+1,1); renderCalendar(); }});
+}
+
+/* Calendar visual upgrade with locally persisted events and date-image attachments. */
+function calendarMonthBoundary(date){ return new Date(date.getFullYear(),date.getMonth(),1).getTime(); }
+function calendarImageFor(date){ return STATE.calendar?.days?.[date]?.image?.data || ''; }
+function openCalendarImage(date){
+  const data=calendarImageFor(date); if(!data) return;
+  const box=document.getElementById('imageLightbox');
+  document.getElementById('imageLightboxImage').src=data;
+  document.getElementById('imageLightboxImage').alt='Calendar image for '+date;
+  box.classList.add('show'); box.setAttribute('aria-hidden','false');
+}
+function setupCalendarImageBoard(){
+  document.querySelectorAll('.cal-photo[data-calendar-image]').forEach(button=>{
+    const date=button.dataset.calendarImage, image=STATE.calendar.days?.[date]?.image;
+    if(!image?.data) return;
+    if(typeof image.width!=='number') image.width=68;
+    if(typeof image.x!=='number') image.x=28;
+    if(typeof image.y!=='number') image.y=30;
+    const card=document.createElement('div');
+    card.className='cal-image-card'; card.dataset.calendarImageCard=date;
+    card.style.width=image.width+'%'; card.style.left=image.x+'%'; card.style.top=image.y+'%';
+    card.innerHTML=`<button type="button" class="cal-image-move" title="Drag image">⠿</button><img src="${image.data}" alt="Calendar image for ${date}"><i class="cal-image-resize" title="Drag to resize"></i>`;
+    button.replaceWith(card);
+    const cell=card.closest('.cal-cell'), picture=card.querySelector('img'), moveHandle=card.querySelector('.cal-image-move'), resizeHandle=card.querySelector('.cal-image-resize');
+    card.addEventListener('click',event=>event.stopPropagation());
+    picture.addEventListener('click',event=>{event.stopPropagation();openCalendarImage(date);});
+    moveHandle.addEventListener('click',event=>event.stopPropagation()); resizeHandle.addEventListener('click',event=>event.stopPropagation());
+    moveHandle.addEventListener('pointerdown',event=>{
+      event.preventDefault(); event.stopPropagation(); const sx=event.clientX,sy=event.clientY,startLeft=card.offsetLeft,startTop=card.offsetTop;
+      moveHandle.setPointerCapture(event.pointerId);
+      const move=e=>{const maxLeft=Math.max(0,cell.clientWidth-card.offsetWidth),maxTop=Math.max(0,cell.clientHeight-card.offsetHeight);card.style.left=Math.max(0,Math.min(maxLeft,startLeft+e.clientX-sx))+'px';card.style.top=Math.max(0,Math.min(maxTop,startTop+e.clientY-sy))+'px';};
+      const end=()=>{const target=STATE.calendar.days?.[date]?.image;if(target){target.x=Math.round(card.offsetLeft/cell.clientWidth*1000)/10;target.y=Math.round(card.offsetTop/cell.clientHeight*1000)/10;saveCalendar();}moveHandle.removeEventListener('pointermove',move);moveHandle.removeEventListener('pointerup',end);moveHandle.removeEventListener('pointercancel',end);};
+      moveHandle.addEventListener('pointermove',move);moveHandle.addEventListener('pointerup',end);moveHandle.addEventListener('pointercancel',end);
+    });
+    resizeHandle.addEventListener('pointerdown',event=>{
+      event.preventDefault(); event.stopPropagation(); const sx=event.clientX,startWidth=card.getBoundingClientRect().width;
+      resizeHandle.setPointerCapture(event.pointerId);
+      const move=e=>{const width=Math.max(28,Math.min(92,Math.round((startWidth+e.clientX-sx)/cell.clientWidth*100)));card.style.width=width+'%';};
+      const end=()=>{const target=STATE.calendar.days?.[date]?.image;if(target){target.width=Math.round(card.getBoundingClientRect().width/cell.clientWidth*100);const maxLeft=Math.max(0,cell.clientWidth-card.offsetWidth),maxTop=Math.max(0,cell.clientHeight-card.offsetHeight);card.style.left=Math.min(card.offsetLeft,maxLeft)+'px';card.style.top=Math.min(card.offsetTop,maxTop)+'px';target.x=Math.round(card.offsetLeft/cell.clientWidth*1000)/10;target.y=Math.round(card.offsetTop/cell.clientHeight*1000)/10;saveCalendar();}resizeHandle.removeEventListener('pointermove',move);resizeHandle.removeEventListener('pointerup',end);resizeHandle.removeEventListener('pointercancel',end);};
+      resizeHandle.addEventListener('pointermove',move);resizeHandle.addEventListener('pointerup',end);resizeHandle.addEventListener('pointercancel',end);
+    });
+  });
+}
+function openCalendarEntry(date){
+  const stored=STATE.calendar.days[date] || {events:[],image:null};
+  const entry={events:Array.isArray(stored.events)?stored.events.slice():[],image:stored.image||null};
+  const overlay=document.getElementById('formOverlay');
+  let pendingImage=null;
+  document.getElementById('formTitle').textContent='Plan '+formatShortDate(date);
+  document.getElementById('formBody').innerHTML=`<div class="form-grid"><div class="field"><label>Date</label><input type="date" id="calEntryDate" value="${date}" min="${studyStartDate()}" max="${examEndDate()}"></div><div class="field"><label>Type</label><select id="calEntryKind"><option value="task">Task / study plan</option><option value="revision">Revision</option><option value="test">Test / mock</option></select></div><div class="field span2"><label>Event / task</label><input type="text" id="calEntryTitle" maxlength="80" placeholder="e.g. Physics: Mechanics"></div><div class="field span2"><label>Image for this date</label><button type="button" class="timer-btn" id="calendarPickImage">${entry.image?'Replace date image':'Attach date image'}</button><span id="calendarImageState" style="font-size:10px;color:var(--text-faint);margin-top:4px;">${entry.image?'An image is already saved for this date.':'Optional — stored only in this browser.'}</span></div>${entry.image?`<div class="field span2 check-field"><input id="calendarRemoveImage" type="checkbox"><label for="calendarRemoveImage">Remove the saved image</label></div>`:''}</div><div class="field" style="margin-top:10px;"><label>Items already planned</label><div id="calendarExistingItems">${entry.events.length?entry.events.map((event,index)=>`<div style="display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid var(--glass-border);font-size:12px;"><span>${escapeHtml(event.title||'Untitled')}</span><button type="button" class="chal-link" data-calendar-remove="${index}">Remove</button></div>`).join(''):'<span style="font-size:12px;color:var(--text-faint);">No personal items yet.</span>'}</div></div>`;
+  document.getElementById('calendarPickImage').addEventListener('click',()=>pickAndCompressImage(1100,.82,data=>{pendingImage={data,updatedAt:new Date().toISOString()};document.getElementById('calendarImageState').textContent='Image ready — it will be saved with this date.';document.getElementById('calendarPickImage').textContent='Choose another image';}));
+  document.querySelectorAll('[data-calendar-remove]').forEach(button=>button.addEventListener('click',()=>{entry.events.splice(parseInt(button.dataset.calendarRemove,10),1);STATE.calendar.days[date]=entry;saveCalendar();openCalendarEntry(date);renderCalendar();}));
+  document.getElementById('formSubmit').onclick=()=>{
+    const targetDate=document.getElementById('calEntryDate').value || date;
+    const title=document.getElementById('calEntryTitle').value.trim();
+    const kind=document.getElementById('calEntryKind').value;
+    if(title) entry.events.push({id:'cal_'+Date.now()+'_'+Math.random().toString(36).slice(2,7),title,kind,createdAt:new Date().toISOString()});
+    if(pendingImage) entry.image=pendingImage;
+    if(document.getElementById('calendarRemoveImage')?.checked) entry.image=null;
+    if(!entry.events.length && !entry.image) delete STATE.calendar.days[targetDate]; else STATE.calendar.days[targetDate]=entry;
+    if(targetDate!==date) delete STATE.calendar.days[date];
+    saveCalendar(); closeForm(); renderCalendar();
+    if(title || pendingImage) logActivity('calendar-days','Updated calendar plan',targetDate);
+    toast(title || pendingImage?'Calendar saved.':'Nothing to save for this date.');
+  };
+  overlay.classList.add('show');
+}
+function renderCalendar(){
+  const startDate=new Date(studyStartDate()+'T00:00:00'), endDate=new Date(examEndDate()+'T00:00:00');
+  const firstAllowed=new Date(startDate.getFullYear(),startDate.getMonth(),1), lastAllowed=new Date(endDate.getFullYear(),endDate.getMonth(),1);
+  if(calendarMonthBoundary(calendarMonth)<calendarMonthBoundary(firstAllowed)) calendarMonth=firstAllowed;
+  if(calendarMonthBoundary(calendarMonth)>calendarMonthBoundary(lastAllowed)) calendarMonth=lastAllowed;
+  const y=calendarMonth.getFullYear(),m=calendarMonth.getMonth();
+  const monthNames=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const first=new Date(y,m,1), startDow=first.getDay(), dim=new Date(y,m+1,0).getDate(), deadlines=gatherDeadlines(), todayStr=fmtDate();
+  const diffDays=Math.max(0,Math.ceil((endDate-new Date())/86400000)), diffWeeks=Math.floor(diffDays/7), diffMonths=Math.max(0,(endDate.getFullYear()-new Date().getFullYear())*12+endDate.getMonth()-new Date().getMonth());
+  let cells='';
+  for(let i=0;i<startDow;i++) cells+='<div class="cal-cell empty"></div>';
+  for(let day=1;day<=dim;day++){
+    const ds=fmtDate(new Date(y,m,day)), holiday=HOLIDAYS[ds], deadlineItems=deadlines[ds]||[], personal=STATE.calendar.days[ds]||{events:[],image:null};
+    const isToday=ds===todayStr, events=Array.isArray(personal.events)?personal.events:[];
+    const title=[holiday,...deadlineItems,...events.map(e=>e.title)].filter(Boolean).join(' · ');
+    cells+=`<div class="cal-cell ${isToday?'today':''} ${holiday?'holiday':''} ${personal.image?.data?'has-photo':''}" data-calendar-date="${ds}" title="${escapeHtml(title)}"><div class="cal-daynum">${day}</div>${isToday?'<div class="cal-today-label">Today</div>':''}${holiday?`<div class="cal-holiday-label">${escapeHtml(holiday)}</div>`:''}${deadlineItems.slice(0,2).map(item=>`<div class="cal-deadline-chip">${escapeHtml(item)}</div>`).join('')}${events.slice(0,2).map(event=>`<div class="cal-personal-chip ${escapeHtml(event.kind||'task')}">${escapeHtml(event.title)}</div>`).join('')}${events.length>2?`<div style="font-size:9px;color:var(--text-faint);">+${events.length-2} more</div>`:''}${personal.image?.data?`<button class="cal-photo" type="button" data-calendar-image="${ds}" title="Open date image"><img src="${personal.image.data}" alt="Calendar image for ${ds}"></button>`:''}</div>`;
+  }
+  document.getElementById('content').innerHTML=`<div class="calendar-v3"><section class="calendar-hero"><h2>Calendar</h2><div class="view-sub">${formatShortDate(studyStartDate())} &nbsp;–&nbsp; ${formatShortDate(examEndDate())}</div><p>Plan <b>today</b>. Achieve <b>tomorrow</b>.</p>${dashIcon('calendar-days','calendar-hero-icon')}</section><section class="calendar-kpis"><div class="glass-card calendar-kpi">${dashIcon('calendar-clock')}<div><b>${diffDays}</b><span>Days remaining</span></div></div><div class="glass-card calendar-kpi">${dashIcon('clock-3')}<div><b>${diffWeeks}</b><span>Weeks remaining</span></div></div><div class="glass-card calendar-kpi">${dashIcon('target')}<div><b>${diffMonths}</b><span>Months remaining</span></div></div><div class="calendar-nav-v3"><button id="calPrev" ${calendarMonthBoundary(calendarMonth)<=calendarMonthBoundary(firstAllowed)?'disabled':''}>‹</button><div class="cal-month-label">${monthNames[m]} ${y}</div><button id="calNext" ${calendarMonthBoundary(calendarMonth)>=calendarMonthBoundary(lastAllowed)?'disabled':''}>›</button></div></section><section class="glass-card calendar-shell"><div class="cal-legend"><div class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--emerald);box-shadow:0 0 6px var(--emerald);"></span>Today</div><div class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--gold);"></span>Holiday</div><div class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--royal);"></span>Chapter / challenge deadline</div><div class="cal-legend-item"><span class="cal-legend-dot" style="background:#62e494;"></span>Your event / image</div></div><div class="cal-grid">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d=>`<div class="cal-dow">${d}</div>`).join('')}${cells}</div><div class="calendar-actions"><button class="btn-add calendar-add-btn" id="calendarAddEvent">${dashIcon('plus')} Add Event / Task</button><span class="calendar-helper">Click any date to add plans, notes, or a photo.</span><button class="btn-add calendar-add-btn" id="calendarToday">${dashIcon('calendar-days')} Go to Today</button></div></section></div>`;
+  document.getElementById('calPrev').addEventListener('click',()=>{calendarMonth=new Date(y,m-1,1);renderCalendar();});
+  document.getElementById('calNext').addEventListener('click',()=>{calendarMonth=new Date(y,m+1,1);renderCalendar();});
+  document.getElementById('calendarAddEvent').addEventListener('click',()=>openCalendarEntry(todayStr<studyStartDate()?studyStartDate():(todayStr>examEndDate()?examEndDate():todayStr)));
+  document.getElementById('calendarToday').addEventListener('click',()=>{const d=new Date();calendarMonth=new Date(d.getFullYear(),d.getMonth(),1);renderCalendar();});
+  document.querySelectorAll('[data-calendar-date]').forEach(cell=>cell.addEventListener('click',event=>{if(event.target.closest('[data-calendar-image]')) return;openCalendarEntry(cell.dataset.calendarDate);}));
+  document.querySelectorAll('[data-calendar-image]').forEach(button=>button.addEventListener('click',event=>{event.stopPropagation();openCalendarImage(button.dataset.calendarImage);}));
+  setupCalendarImageBoard();
+  hydrateIcons();
 }
 
 /* ===================== RENDER: NOTES ===================== */
@@ -3890,7 +4146,7 @@ function setMusicVolume(v){
 
 /* ===================== BACKUP / RESTORE ===================== */
 async function exportBackup(){
-  const keys = ['syllabus:maths','syllabus:physics','syllabus:chemistry','profile','challenges','study','notes:maths','notes:physics','notes:chemistry','dailyReview','routine','goals','rules','settings'];
+  const keys = ['syllabus:maths','syllabus:physics','syllabus:chemistry','profile','challenges','study','calendar','notes:maths','notes:physics','notes:chemistry','dailyReview','routine','goals','rules','settings'];
   const data = {};
   for(const k of keys){
     try{ const res = await window.storage.get(k); data[k]=JSON.parse(res.value); }catch(e){ /* not set yet */ }
@@ -4084,7 +4340,7 @@ function attachSettingsHandlers(){
     modal.classList.remove('success-modal'); modal.classList.add('danger-modal');
     document.getElementById('confirmYes').className='btn-danger';
     pendingAction = async ()=>{
-      const keys = ['syllabus:maths','syllabus:physics','syllabus:chemistry','profile','challenges','study','notes:maths','notes:physics','notes:chemistry','dailyReview','routine','goals','rules','settings'];
+      const keys = ['syllabus:maths','syllabus:physics','syllabus:chemistry','profile','challenges','study','calendar','notes:maths','notes:physics','notes:chemistry','dailyReview','routine','goals','rules','settings'];
       for(const k of keys){ try{ await window.storage.delete(k); }catch(e){} }
       toast('All data reset. Reloading...');
       setTimeout(()=>location.reload(), 1200);
@@ -4178,10 +4434,17 @@ function switchView(view){
 }
 
 function renderCurrentView(){
-  if(currentView==='dashboard') renderDashboard();
+  const content = document.getElementById('content');
+  const studyView = document.getElementById('study-hours-view');
+  // The original static study prototype is retained only for backward-safe markup.
+  // The live study tracker below is the single source of truth for this screen.
+  if(studyView) studyView.style.display = 'none';
+  if(content) content.style.display = 'block';
+
+  if(currentView==='study') renderStudyHours();
+  else if(currentView==='dashboard') renderDashboard();
   else if(['maths','physics','chemistry'].includes(currentView)) renderSyllabus(currentView, labelFor(currentView));
   else if(currentView==='challenges') renderChallenges();
-  else if(currentView==='study') renderStudyHours();
   else if(currentView==='calendar') renderCalendar();
   else if(currentView==='notes') renderNotes();
   else if(currentView==='dailyreview') renderDailyReview();
@@ -4236,6 +4499,56 @@ setInterval(()=>{
     }
   }
 }, 30000);
+
+const TFC_StudyEngine = {
+    state: { dailyLogged: 43.0, dailyGoal: 6.0, weeklyLogged: 43.0, weeklyGoal: 42.0, timerSeconds: 30, timerActive: false, timerIntervalRef: null },
+    init() {
+        this.renderProgressRings();
+        this.renderStatsDashboard();
+        this.initTimerEngine();
+        this.renderHeatmapMatrix();
+        document.getElementById('trigger-manual-log').addEventListener('click', () => {
+            const hrs = prompt("Enter study time to log (hours):", "1.5");
+            if (hrs && !isNaN(hrs)) this.injectLoggedTime(parseFloat(hrs));
+        });
+    },
+    renderProgressRings() {
+        const calcOffset = (l, g, r = 238.76) => { const ratio = l / g; return ratio >= 1 ? 0 : r - (ratio * r); };
+        document.getElementById('ring-daily').style.strokeDashoffset = calcOffset(this.state.dailyLogged, this.state.dailyGoal);
+        document.getElementById('ring-weekly').style.strokeDashoffset = calcOffset(this.state.weeklyLogged, this.state.weeklyGoal);
+    },
+    renderStatsDashboard() {
+        document.getElementById('lbl-daily-hrs').innerText = `${this.state.dailyLogged.toFixed(1)}h`;
+        document.getElementById('lbl-daily-sub').innerText = this.state.dailyLogged.toFixed(1);
+        document.getElementById('lbl-weekly-hrs').innerText = `${this.state.weeklyLogged.toFixed(1)}h`;
+        document.getElementById('lbl-weekly-sub').innerText = this.state.weeklyLogged.toFixed(1);
+    },
+    initTimerEngine() {
+        const toggleBtn = document.getElementById('btn-timer-toggle'); const resetBtn = document.getElementById('btn-timer-reset');
+        const commitBtn = document.getElementById('btn-timer-commit'); const display = document.getElementById('timer-output');
+        const fmtDigits = (s) => {
+            const h = Math.floor(s / 3600).toString().padStart(2, '0');
+            const m = Math.floor((s % 3600) / 60).toString().padStart(2, '0');
+            const sec = (s % 60).toString().padStart(2, '0');
+            return `${h}:${m}:${sec}`;
+        };
+        toggleBtn.addEventListener('click', () => {
+            if (this.state.timerActive) { clearInterval(this.state.timerIntervalRef); this.state.timerActive = false; toggleBtn.innerText = "Resume"; }
+            else { this.state.timerActive = true; toggleBtn.innerText = "Pause"; this.state.timerIntervalRef = setInterval(() => { this.state.timerSeconds++; display.innerText = fmtDigits(this.state.timerSeconds); }, 1000); }
+        });
+        resetBtn.addEventListener('click', () => { clearInterval(this.state.timerIntervalRef); this.state.timerActive = false; this.state.timerSeconds = 0; display.innerText = fmtDigits(0); toggleBtn.innerText = "Start"; });
+        commitBtn.addEventListener('click', () => { this.injectLoggedTime(this.state.timerSeconds / 3600); resetBtn.click(); });
+    },
+    injectLoggedTime(hrs) { this.state.dailyLogged += hrs; this.state.weeklyLogged += hrs; this.renderProgressRings(); this.renderStatsDashboard(); },
+    renderHeatmapMatrix() {
+        const target = document.getElementById('heatmap-mesh-target'); if (!target) return; let buffer = '';
+        for (let i = 0; i < 6 * 31; i++) { const seed = Math.random(); const tier = seed > 0.85 ? 4 : seed > 0.65 ? 3 : seed > 0.45 ? 2 : seed > 0.2 ? 1 : 0; buffer += `<div class="matrix-cell tier-${tier}"></div>`; }
+        target.innerHTML = buffer;
+    }
+};
+
+// Legacy prototype deliberately does not initialize. Study Hours is rendered by
+// renderStudyHours(), which reads and writes the persisted tracker data.
 
 /* ===================== INIT ===================== */
 async function init(){
